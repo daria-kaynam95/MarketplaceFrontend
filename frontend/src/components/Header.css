@@ -1,0 +1,171 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.header {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+    background-color: #F4E8D1;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    font-size: 13px;
+    z-index: 10;
+}
+
+/* Elyssia — Libre Caslon Text */
+.header-left .logo {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #5c2e1d;
+}
+
+/* Меню и опции — Poppins */
+.nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+}
+
+    .nav a {
+        font-family: 'Poppins', sans-serif !important;
+        text-decoration: none;
+        color: #5c2e1d;
+        font-weight: 500;
+        transition: color 0.2s ease;
+    }
+
+        .nav a:hover {
+            color: #8e2d2d;
+        }
+
+/* Опции справа (USD - Dollar, ENG) */
+.options {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-left: auto;
+    padding-right: 40px;
+}
+
+    .options .currency,
+    .options .language {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+        color: #5c2e1d;
+        font-size: 13px;
+        transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+        .options .currency:hover,
+        .options .language:hover {
+            color: #8e2d2d;
+            transform: scale(1.1);
+        }
+
+    .options span.icon {
+        width: 22px;
+        height: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .options .icon svg {
+        width: 100%;
+        height: 100%;
+        stroke: #5c2e1d;
+        stroke-width: 1,1;
+        fill: none;
+        transition: fill 0.2s ease, stroke 0.2s ease;
+    }
+
+    .options .icon:hover svg {
+        fill: #5c2e1d;
+        stroke: #5c2e1d;
+    }
+
+    .options .search-icon {
+        margin-left: 20px;
+    }
+
+.heart-icon {
+    fill: none;
+    stroke: #5c2e1d;
+    stroke-width: 1,3;
+    transition: fill 0.2s ease, stroke 0.2s ease;
+}
+
+.icon:hover .heart-icon {
+    fill: #5c2e1d;
+    stroke: #5c2e1d;
+}
+
+.cart-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-container {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    z-index: 20;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+    .search-container.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0); /* Возвращается вниз */
+    }
+
+.search-input-wrapper {
+    position: relative;
+    width: 700px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 8px 40px 8px 16px;
+    border: 1px solid #cbb89d;
+    border-radius: 20px;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    color: #5c2e1d;
+    background-color: #fdf8ef;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+    .search-input::placeholder {
+        color: #b89d7a;
+        text-align: left;
+    }
+
+.search-icon-inside {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    color: #5c2e1d;
+    pointer-events: none;
+    font-size: 18px;
+}

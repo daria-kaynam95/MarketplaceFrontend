@@ -1,0 +1,53 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFAF8 !important;
+}
+
+.reviews-panel-men {
+    padding: 3rem 1rem;
+    background-color: #FFFAF8;
+    text-align: center;
+    max-width: 900px;
+    margin: -5rem auto 4rem;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.reviews-title-men {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 3rem;
+    font-weight: normal;
+    color: #603A31;
+    margin-bottom: 1rem;
+}
+
+.reviews-text-men {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.25rem;
+    color: #603A31;
+    margin-bottom: 2rem;
+}
+
+.reviews-button-men {
+    background-color: transparent;
+    border: 2px solid #5E3A2F;
+    color: #603A31;
+    padding: 5px 24px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, color 0.3s;
+    margin-top: -4rem;
+}
+
+    .reviews-button-men:hover {
+        background-color: #603A31;
+        color: #fff;
+    }

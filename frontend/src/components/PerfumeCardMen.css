@@ -1,0 +1,304 @@
+﻿.perfume-card-men {
+    position: relative;
+    width: 290px;
+    height: 390px;
+    border-radius: 175px / 100px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
+    box-shadow: none !important;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 0 auto 30px;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .perfume-card-men:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+.image-container-men {
+    position: relative;
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.perfume-image-men {
+    position: relative;
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+    margin-top: 10px;
+    border-radius: 15px;
+    background: transparent;
+}
+
+    .perfume-image-men.pmen1 {
+        width: 365px;
+        height: 395px;
+        margin-top: -15px;
+    }
+
+    .perfume-image-men.pmen2 {
+        width: 285px;
+        height: 300px;
+        margin-top: -10px;
+    }
+
+    .perfume-image-men.pmen3 {
+        width: 295px;
+        height: 390px;
+        margin-top: -10px;
+    }
+
+    .perfume-image-men.pmen4 {
+        width: 299px;
+        height: 450px;
+        margin-top: -15px;
+    }
+
+    .perfume-image-men.pmen5 {
+        width: 320px;
+        height: 380px;
+        margin-top: -28px;
+    }
+
+    .perfume-image-men.pmen6 {
+        width: 285px;
+        height: 390px;
+        margin-top: -10px;
+    }
+
+    .perfume-image-men.pmen7 {
+        width: 330px;
+        height: 390px;
+        margin-top: -25px;
+    }
+
+    .perfume-image-men.pmen8 {
+        width: 277px;
+        height: 375px;
+        margin-top: -35px;
+    }
+
+    .perfume-image-men.pmen9 {
+        width: 275px;
+        height: 385px;
+        margin-top: -22px;
+    }
+
+    .perfume-image-men.pmen10 {
+        width: 299px;
+        height: 400px;
+        margin-top: -5px;
+    }
+
+    .perfume-image-men.pmen11 {
+        width: 285px;
+        height: 376px;
+        margin-top: -6px;
+    }
+
+    .perfume-image-men.pmen12 {
+        width: 295px;
+        height: 395px;
+        margin-top: -5px;
+    }
+
+
+.perfume-text-men {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 0.8rem;
+    padding: 0 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    line-height: 1.1;
+    font-weight: normal;
+}
+
+/* Индивидуальное расположение текста по variant-классу */
+.perfume-card-men.variant1 .perfume-text-men {
+    margin-top: 35px;
+}
+
+.perfume-card-men.variant2 .perfume-text-men {
+    margin-top: 40px;
+}
+
+.perfume-card-men.variant3 .perfume-text-men {
+    margin-top: 37px;
+}
+
+.perfume-card-men.variant4 .perfume-text-men {
+    margin-top: 35px;
+}
+
+.perfume-card-men.variant5 .perfume-text-men {
+    margin-top: 36px;
+}
+
+.perfume-card-men.variant6 .perfume-text-men {
+    margin-top: 36px;
+}
+
+.perfume-card-men.variant7 .perfume-text-men {
+    margin-top: 26px;
+}
+
+.perfume-card-men.variant8 .perfume-text-men {
+    margin-top: 26px;
+}
+
+.perfume-card-men.variant9 .perfume-text-men {
+    margin-top: 22px;
+}
+
+.perfume-card-men.variant10 .perfume-text-men {
+    margin-top: 35px;
+}
+
+.perfume-card-men.variant11 .perfume-text-men {
+    margin-top: 37px;
+}
+
+.perfume-card-men.variant12 .perfume-text-men {
+    margin-top: 32px;
+}
+
+.perfume-top-row-men {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.gap1 .perfume-volume-men {
+    margin-left: 8px;
+}
+
+.gap2 .perfume-volume-men {
+    margin-left: 13px;
+}
+
+.gap3 .perfume-volume-men {
+    margin-left: 152px;
+}
+
+.gap4 .perfume-volume-men {
+    margin-left: 53px;
+}
+
+.gap5 .perfume-volume-men {
+    margin-left: 25px;
+}
+
+.gap6 .perfume-volume-men {
+    margin-left: 69px;
+}
+
+.gap7 .perfume-volume-men {
+    margin-left: 52px;
+}
+
+.gap8 .perfume-volume-men {
+    margin-left: 44px;
+}
+
+.gap9 .perfume-volume-men {
+    margin-left: 79px;
+}
+
+.perfume-brand-men {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: #8C6A5E;
+}
+
+.perfume-volume-men {
+    font-style: normal;
+    color: #8C6A5E;
+}
+
+.perfume-name-men {
+    font-size: 1.27rem !important;
+    font-weight: 400;
+    color: #8C6A5E;
+    text-align: center;
+}
+
+.perfume-price-men {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #731718;
+    text-align: center;
+    margin-top: 0rem;
+}
+
+.perfume-badge-men {
+    position: absolute;
+    background-color: #6A0203;
+    color: white;
+    border-radius: 5px;
+    font-weight: 300;
+    z-index: 10;
+    letter-spacing: 0.5px;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Индивидуальные стили бейджей */
+.badge1 {
+    top: 1px;
+    left: 79px;
+    font-size: 15px;
+    padding: 3px 17px;
+}
+
+.badge3 {
+    top: 5px;
+    left: 48px;
+    font-size: 14px;
+    padding: 4px 15px;
+}
+
+.badge6 {
+    top: -6px;
+    left: 50px;
+    font-size: 14px;
+    padding: 4px 17px;
+}
+
+.badge7 {
+    top: -1px;
+    left: 65px;
+    font-size: 15px;
+    padding: 3px 17px;
+}
+
+.badge9 {
+    top: -1px;
+    left: 25px;
+    font-size: 15px;
+    padding: 3px 15px;
+}
+
+.badge11 {
+    top: -14px;
+    left: 45px;
+    font-size: 15px;
+    padding: 3px 17px;
+}
+
+.badge12 {
+    top: -8px;
+    left: 40px;
+    font-size: 13px;
+    padding: 3px 15px;
+}
+

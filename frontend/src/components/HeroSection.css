@@ -1,0 +1,126 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@600;800&display=swap');
+
+.hero {
+    position: relative;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    color: #601919;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px;
+    font-size: 14px;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    font-family: 'Playfair Display', serif;
+}
+
+.nav {
+    display: flex;
+    gap: 30px;
+}
+
+    .nav a {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+/* Заголовок */
+.headline {
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    font-size: 64px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    line-height: 1.2;
+    z-index: 1;
+}
+
+/* Подзаголовок */
+.subheadline {
+    position: absolute;
+    bottom: 45px;
+    right: 55px;
+    font-size: 72px;
+    line-height: 1.2;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800;
+    text-align: left;
+    z-index: 1;
+}
+
+/* Круг */
+.circle-wrapper {
+    position: absolute;
+    bottom: 240px; /* подняли */
+    right: 220px; /* сдвинули правее */
+    transform: translateY(-240px); /* подняли */
+    width: 230px;
+    height: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.text-circle {
+    width: 230px;
+    height: 230px;
+    animation: rotate 10s linear infinite;
+}
+
+    .text-circle text {
+        font-size: 14px; /* увеличили */
+        font-weight: 700; /* жирнее */
+        letter-spacing: 2.5px; /* увеличили расстояние */
+        fill: #601919; /* сделали текст темнее для видимости */
+        font-family: 'Cormorant Garamond', serif;
+    }
+
+.icon-center {
+    position: absolute;
+    width: 58px;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+    .icon-center svg {
+        width: 58px;
+        height: 78px;
+    }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

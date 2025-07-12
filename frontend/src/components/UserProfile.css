@@ -1,0 +1,230 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+.profile-wrapper {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #FFFAF8;
+    color: #603A31;
+}
+
+.profile-sidebar {
+    width: 250px;
+    background: #FFFAF8;
+    border-right: none;
+    padding-top: 95px;
+    box-shadow: none;
+    position: sticky;
+    top: 0;
+}
+
+.profile-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .profile-menu li {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 15px 25px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: text-decoration 0.2s ease;
+        gap: 10px;
+        user-select: none;
+        border-left: 4px solid transparent;
+        text-underline-offset: 4px;
+        text-decoration: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .profile-menu li svg {
+            flex-shrink: 0;
+        }
+
+        .profile-menu li:hover {
+            text-decoration: underline;
+            background-color: transparent;
+        }
+
+        .profile-menu li.active {
+            text-decoration: underline;
+            border-left-color: transparent;
+            font-weight: 700;
+            background-color: transparent;
+        }
+
+.profile-main {
+    flex: 1;
+    padding: 40px 50px;
+    background: #FFFAF8;
+    box-sizing: border-box;
+}
+
+.profile-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #FFFAF8;
+    padding: 10px 40px 30px 40px;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.profile-title {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 28px;
+    margin-top: 10px; 
+    margin-bottom: 5px; 
+    letter-spacing: 1px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+    .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+    }
+
+.profile-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.profile-email {
+    font-size: 14px;
+    color: #8b7d76;
+    margin-bottom: 20px;
+}
+
+.profile-links {
+    margin-bottom: 30px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+    .profile-links a {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #603A31;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+        .profile-links a:hover {
+            color: #a97661;
+            text-decoration: underline;
+        }
+
+.profile-edit-button {
+    background-color: transparent;
+    color: #603A31;
+    border: 1px solid #603A31;
+    padding: 3px 40px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+    font-family: 'Poppins', sans-serif;
+    margin-top: -10px;
+}
+
+    .profile-edit-button:hover {
+        background-color: rgba(96, 58, 49, 0.05);
+    }
+
+.profile-form {
+    display: none;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .profile-wrapper {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2d8d1;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .profile-menu {
+        display: flex;
+        gap: 15px;
+    }
+
+        .profile-menu li {
+            padding: 10px 15px;
+            border-left: none;
+            border-bottom: 3px solid transparent;
+        }
+
+            .profile-menu li.active {
+                border-bottom-color: transparent;
+            }
+
+    .profile-main {
+        padding: 20px;
+    }
+
+    .profile-card {
+        padding: 20px;
+    }
+
+    .profile-edit-button {
+        padding: 12px 25px;
+        font-size: 16px;
+    }
+}
+
+.back-button {
+    position: absolute;
+    top: 40px; 
+    left: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    color: #1f1f1f;
+    font-size: 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    outline: none;
+}
+
+    .back-button:hover {
+        background: none;
+        color: #1f1f1f;
+    }
+
+    .back-button:focus {
+        outline: none;
+    }

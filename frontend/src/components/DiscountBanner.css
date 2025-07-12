@@ -1,0 +1,19 @@
+﻿.discount-banner {
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    background-color: #F4E8D1;
+    border-top: 2px solid #6a0203;
+    border-bottom: 2px solid #6a0203;
+    font-family: 'Poppins', sans-serif;
+    color: #5a0f0f;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+}
+
+.banner-text {
+    white-space: nowrap;
+    margin: 0 50px;
+}

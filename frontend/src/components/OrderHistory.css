@@ -1,0 +1,96 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+.order-history-container {
+    padding: -10px;
+    font-family: 'Libre Caslon Text', serif;
+    background-color: #fff9f6;
+    color: #4a2c2a;
+}
+
+.order-title {
+    font-size: 26px;
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.order-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-left: 35px;
+}
+
+.order-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.order-btn {
+    background: transparent;
+    border: none;
+    color: #5a2f2d;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 16px;
+    cursor: pointer;
+    position: relative;
+    padding: 4px 0;
+}
+
+    .order-btn.active {
+        color: #5a2f2d;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+.order-icons {
+    display: flex;
+    gap: 10px;
+}
+
+.icon-btn {
+    background: #f2e7e3;
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 18px;
+    color: #6b2e2c;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    .icon-btn:hover {
+        background: #e7d7d2;
+    }
+
+.order-content {
+    margin-top: 30px;
+    padding: 20px;
+    background: linear-gradient(to bottom, #ECDED6 0%, #fff9f6 100%);
+    border-radius: 20px;
+}
+
+.order-table-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0 4px;
+    color: #4a2c2a;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+    .order-table-header span {
+        flex: 1;
+        text-align: center;
+        font-family: 'Libre Caslon Text', serif;
+    }
+
+.divider-line {
+    height: 1px;
+    background-color: #c9b5aa;
+    opacity: 0.5;
+    width: 100%;
+}

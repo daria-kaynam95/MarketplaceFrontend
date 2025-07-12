@@ -1,0 +1,214 @@
+﻿/* Обёртка всей страницы */
+.edit-profile-wrapper {
+    background-color: #fef8f6;
+    color: #442c25;
+    font-family: 'Poppins', sans-serif;
+    padding: 30px 40px 60px 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+/* Общая обёртка панели и контента */
+.panel-wrapper {
+    margin-left: 0;
+    width: 100%;
+}
+
+/* Заголовки */
+.edit-profile-title {
+    text-align: center;
+    font-size: 26px;
+    margin-top: 10px !important;
+    font-family: 'Libre Caslon Text', serif;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.edit-profile-subtitle {
+    text-align: center;
+    font-size: 13px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: underline;
+    margin-bottom: 30px;
+    cursor: pointer;
+    color: #442c25;
+}
+
+/* Контент с двумя колонками */
+.edit-profile-content {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+/* Левая и правая колонка */
+.left-column,
+.right-column {
+    width: 50%;
+}
+
+/* Фото */
+.profile-photo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-photo-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.change-photo-btn {
+    margin-left: 12px;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* Поля ввода */
+.form-group {
+    margin-bottom: 18px;
+}
+
+.short-field {
+    max-width: 260px;
+}
+
+.label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.input-container {
+    position: relative;
+}
+
+.input {
+    width: 100%;
+    padding: 8px 30px 8px 14px;
+    border: 1px solid #442c25;
+    border-radius: 9999px;
+    background-color: white;
+    font-size: 13px;
+    outline: none;
+    max-width: 220px;
+}
+
+.long-field {
+    max-width: 515px !important;
+}
+
+.edit-icon {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Email и телефон */
+.static-group {
+    margin-bottom: 14px;
+}
+
+.label-inline {
+    font-weight: 500;
+    margin-right: 6px;
+    font-size: 13px;
+}
+
+.static-inline {
+    font-size: 13px;
+}
+
+.static-hint {
+    font-size: 11px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* Кнопка сохранения */
+.save-button {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 20px;
+    background-color: transparent;
+    border: 1px solid #442c25;
+    color: #442c25;
+    padding: 5px 35px;
+    border-radius: 9999px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+    .save-button:hover {
+        background-color: #442c25;
+        color: white;
+    }
+
+/* Заголовок блока адресов */
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.add-address {
+    color: #b94646;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Select */
+.select {
+    width: 100%;
+    padding: 8px 14px;
+    border: 1px solid #442c25;
+    border-radius: 9999px;
+    background-color: white;
+    font-size: 13px;
+    outline: none;
+    max-width: 220px;
+}
+
+/* Для ряда город/штат и страна/почтовый код */
+.flex-row {
+    display: flex;
+    gap: 12px;
+}
+
+/* Специфичные размеры для адресных полей */
+.country-field .input,
+.country-field .select {
+    width: 200px !important;
+    max-width: 200px !important;
+}
+
+.state-field .input {
+    max-width: 155px !important;
+}
+
+.city-field .input {
+    max-width: 155px !important;
+}
+
+.zip-field .input {
+    max-width: 155px;
+}

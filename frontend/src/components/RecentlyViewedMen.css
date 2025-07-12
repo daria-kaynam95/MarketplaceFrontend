@@ -1,0 +1,185 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+
+.recently-viewed-men {
+    padding: 14px 20px;
+    background-color: #fffaf8;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.recently-title-men {
+    font-size: 48px;
+    font-weight: normal;
+    color: #603A31;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.recently-list-men {
+    display: flex;
+    justify-content: flex-start;
+    gap: 64px;
+    flex-wrap: wrap;
+    padding-left: 35px;
+}
+
+.recently-card-men {
+    position: relative;
+    width: 290px;
+    height: 425px;
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
+    border-radius: 10rem;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+    .recently-card-men:hover {
+        transform: translateY(-5px);
+    }
+
+.product-men-pic {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 4px;
+}
+
+/* Индивидуальные размеры и отступы */
+.img-men-p1 {
+    width: 330px;
+    height: 380px;
+    margin-top: -23px;
+    margin-left: 0px;
+}
+
+.img-men-p2 {
+    width: 289px;
+    height: 315px;
+    margin-top: 5px;
+    margin-left: 0px;
+}
+
+/* Общая информация */
+.product-men-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1.2;
+}
+
+/* Общие стили текста */
+.product-men-brand-size-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #8C6A5E;
+    font-weight: 500;
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+.product-men-name {
+    font-size: 1.17rem;
+    font-weight: normal;
+    color: #8C6A5E;
+    text-align: center;
+    margin-top: 0;
+}
+
+.product-men-price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #731718;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Индивидуальные стили: карточка p1 */
+.p1 .product-men-pic {
+    margin-bottom: -20px;
+}
+
+.p1 .product-men-info {
+    margin-top: -6px;
+    padding-top: 0;
+}
+
+.p1 .product-men-brand-size-row {
+    width: 85%;
+    justify-content: center;
+    gap: 22px;
+    font-size: 0.88rem;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.p1 .product-men-name {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.p1 .product-men-price {
+    font-size: 1.5rem;
+    color: #7a1f1f;
+    margin-top: 2px;
+}
+
+/* Индивидуальные стили: карточка p2 */
+.p2 .product-men-brand-size-row {
+    width: 80%;
+    justify-content: space-between;
+    font-size: 0.86rem;
+    gap: 56px;
+    color: #8C6A5E;
+    margin-bottom: 2px;
+    margin-left: -45px;
+}
+
+.p2 .product-men-name {
+    font-size: 1.1rem;
+    margin-top: 0;
+    color: #8C6A5E;
+}
+
+.p2 .product-men-price {
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #731718;
+    margin-top: 2px;
+}
+
+/* Общий стиль для бейджа */
+.tag {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    background-color: #6A0203;
+    color: white;
+    border-radius: 5px;
+    font-weight: 100;
+    letter-spacing: 0.5px;
+    font-size: 0.65rem;
+    padding: 4px 8px;
+    z-index: 10;
+    user-select: none;
+    pointer-events: none;
+}
+
+    /* Индивидуальный стиль для бейджа второго товара */
+    .tag.recently-badge2 {
+        top: 35px !important;
+        right: 177px !important;
+        left: auto !important;
+        font-size: 13px !important;
+        padding: 4px 17px !important;
+    }

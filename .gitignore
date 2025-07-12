@@ -1,0 +1,65 @@
+﻿# Node.js / React
+node_modules/
+build/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Diagnostic reports
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Editor directories and files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.user
+*.userosscache
+*.sdf
+*.cache
+*.dbmdl
+*.bak
+
+# Visual Studio
+.vs/
+bin/
+obj/
+Generated\ Files/
+
+# Coverage
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Optional npm cache directory
+.npm/
+
+# Optional eslint cache
+.eslintcache
+
+# Test output
+/jest-test-results.json
+
+# Production
+dist/
+
+# React Native
+.expo/
+*.expo
+*.xcworkspace
+
+# Optional: lockfiles (uncomment one if you use only one package manager)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

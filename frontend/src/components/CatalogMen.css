@@ -1,0 +1,160 @@
+﻿/* Заголовок с фоновым изображением и полупрозрачным наложением */
+.catalog-header {
+    position: relative;
+    background-image: url('../assets/headermen.png');
+    background-size: cover;
+    background-position: center;
+    height: 645px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 0;
+}
+
+    /* Полупрозрачный фон-оверлей только на этом блоке */
+    .catalog-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(96, 58, 49, 0.68);
+        z-index: 1;
+        border-radius: 0;
+    }
+
+
+.catalog-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.5);
+}
+
+.catalog-header-text {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    animation: fadeInUp 1s ease forwards;
+}
+
+.catalog-label {
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #d1d1d1;
+}
+
+.catalog-header-text h1 {
+    color: #ECDED6;
+    font-size: 5rem;
+    font-weight: bold;
+    margin: 0.2rem 0;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.catalog-breadcrumb {
+    color: #ECDED6;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    color: #f3e6e2;
+    font-family: 'Poppins', sans-serif;
+}
+
+.catalog-section {
+    background-color: #FFFAF8;
+    padding-bottom: 4rem;
+    padding-top: 2rem;
+}
+
+.catalog-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    padding-left: 5px;
+    margin-left: 45px;
+    margin-top: 1rem;
+}
+
+.catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 220px);
+    justify-content: center;
+    gap: 4rem 7rem;
+    width: max-content;
+    margin: 0 auto;
+    padding-left: 45px;
+    margin-left: 3px;
+    margin-top: -1rem;
+}
+
+.perfume-card-men {
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 45%, #FFFAF8 100%) !important;
+    border-radius: 10rem;
+    padding: 0rem;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 312px;
+    height: 470px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+    .perfume-card-men:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .perfume-card-men img {
+        width: 120px;
+        height: auto;
+        object-fit: contain;
+        margin-bottom: 1rem;
+    }
+
+    .perfume-card-men h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .perfume-card-men p {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #B65C5C;
+    }
+
+/* Кнопки пагинации */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+    .pagination button {
+        background-color: #333;
+        color: white;
+        border: none;
+        margin: 0 5px;
+        padding: 10px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+        .pagination button:hover {
+            background-color: #555;
+        }
+

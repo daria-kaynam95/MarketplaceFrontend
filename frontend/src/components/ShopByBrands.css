@@ -1,0 +1,142 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Libre+Caslon+Text&display=swap');
+
+.shop-brands {
+    padding: 50px 20px;
+    background-color: #fff8f5;
+    text-align: center;
+}
+
+    .shop-brands h2 {
+        font-size: 36px;
+        margin-bottom: 32px;
+        font-weight: bold;
+        font-family: 'Libre Caslon Text', serif;
+    }
+
+/* Слайдерная обёртка */
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.brands-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 40px;
+    padding: 10px 0;
+    scrollbar-width: none; /* Firefox */
+}
+
+    .brands-slider::-webkit-scrollbar {
+        display: none; /* Chrome, Safari */
+    }
+
+/* Кнопки влево/вправо */
+.slider-button {
+    background-color: #8b6256;
+    border: none;
+    border-radius: 50%;
+    width: 32px; 
+    height: 32px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color 0.3s ease;
+}
+
+    .slider-button .arrow {
+        color: #fbeee2;
+        font-size: 14px; 
+        line-height: 1;
+    }
+
+    .slider-button.left {
+        left: -1px; 
+    }
+
+    .slider-button.right {
+        right: -1px;
+    }
+
+
+/* Контейнер карточек */
+.brand-card {
+    width: 300px;
+    height: 380px;
+    background: linear-gradient(180deg, #EEE1D9 0%, rgba(236, 232, 220, 0) 100%);
+    border-radius: 160px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+    .brand-card:hover {
+        transform: translateY(-5px);
+    }
+
+    /* Индивидуальные размеры изображений */
+    .brand-card.moschino img {
+        width: 287px;
+        height: 325px;
+        transform: translateY(-25px);
+    }
+
+    .brand-card.tomford img {
+        width: 187px;
+        height: 325px;
+    }
+
+    .brand-card.versace img {
+        width: 220px;
+        height: 324px;
+    }
+
+    .brand-card.ajmal img {
+        width: 255px;
+        height: 334px;
+    }
+
+    /* Можно добавить для новых брендов */
+    .brand-card.chanel img {
+        width: 240px;
+        height: 330px;
+    }
+
+    .brand-card.dior img {
+        width: 230px;
+        height: 325px;
+    }
+
+    .brand-card.gucci img {
+        width: 250px;
+        height: 320px;
+    }
+
+    .brand-card img {
+        display: block;
+        margin: 0 auto 6px auto;
+        object-fit: contain;
+        z-index: 1;
+    }
+
+    .brand-card p {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 18px;
+        margin: 0;
+        color: #6A0203;
+        z-index: 1;
+    }

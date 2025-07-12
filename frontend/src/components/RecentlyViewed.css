@@ -1,0 +1,134 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
+.recently-viewed {
+    padding: 14px 20px;
+    background-color: #fffaf8;
+    font-family: 'Libre Caslon Text', serif;
+}
+
+.recently-title {
+    font-size: 48px;
+    font-weight: normal;
+    color: #603A31;
+    text-align: center;
+    margin-bottom: 33px;
+}
+
+.recently-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 33px;
+    flex-wrap: wrap;
+    padding-left: 35px;
+}
+
+.recently-card {
+    width: 290px;
+    height: 390px;
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
+    border-radius: 10rem;
+    padding: 24px 16px;
+    text-align: center;
+    position: relative;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .recently-card:hover {
+        transform: translateY(-5px);
+    }
+
+.recently-pic {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+/* Индивидуальные настройки изображений */
+.img-p1 {
+    width: 245px;
+    height: 299px;
+    margin-top: 1px;
+    margin-bottom: -5px;
+}
+
+.img-p2 {
+    width: 245px;
+    height: 287px;
+    margin-top: 1px;
+    margin-bottom: 4px;
+}
+
+.tag {
+    position: absolute;
+    top: 14px;
+    left: 20px;
+    background-color: #7a1f1f;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+/* Общие стили текста */
+.product-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    line-height: 1.2;
+}
+
+/* Строка: бренд + объём */
+.brand-size-row {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    font-size: 0.9rem;
+    color: #8C6A5E;
+    font-weight: 500;
+    margin-bottom: 1px;
+}
+
+/* Название аромата */
+.product-name {
+    font-size: 1.17rem;
+    font-weight: normal;
+    color: #8C6A5E;
+    text-align: center;
+}
+
+/* Цена */
+.product-price {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #731718;
+    text-align: center;
+    margin-top: 0.2rem;
+}
+
+/* Индивидуальные настройки текста для карточки p1 */
+.p1 .brand-size-row {
+    width: 85%;
+    justify-content: center;
+    gap: 25px;
+    font-size: 0.88rem;
+    color: #8C6A5E;
+}
+
+.p1 .product-name {
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: #8C6A5E;
+    margin-top: 2px;
+}
+
+.p1 .product-price {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #7a1f1f;
+    margin-top: 2px;
+}

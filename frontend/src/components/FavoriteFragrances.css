@@ -1,0 +1,43 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Poppins&display=swap');
+
+.favorite-container {
+    background-color: #fff9f6;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.favorite-title {
+    font-size: 26px;
+    font-family: 'Libre Caslon Text', serif;
+    color: #4a2c2a;
+    margin-top: 20px;     
+    margin-bottom: 400px;   
+}
+
+.favorite-description {
+    font-size: 16px;
+    color: #5a2f2d;
+    max-width: 600px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 5px; 
+}
+
+.favorite-button {
+    padding: 5px 40px;
+    background-color: #FFFAF8;
+    color: #6A0203;
+    border: none;
+    border-radius: 28px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1.5px solid #6A0203;
+    transition: background-color 0.3s;
+}
+
+    .favorite-button:hover {
+        background-color: #ECDED6;
+    }

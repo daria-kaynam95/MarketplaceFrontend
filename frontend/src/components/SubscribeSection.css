@@ -1,0 +1,69 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Poppins&display=swap');
+
+.subscribe-section {
+    background-color: #ECDED6;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.subscribe-title {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #523536;
+    margin-bottom: 20px;
+}
+
+.subscribe-text {
+    font-family: 'Poppins', sans-serif;
+    color: #523536;
+    margin-bottom: 30px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 14px;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: transparent; 
+}
+
+.subscribe-input {
+    padding: 10px 20px;
+    border: 1px solid #523536;
+    border-radius: 9999px;
+    width: 280px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+    background-color: #FFFAF8;
+    color: #523536;
+}
+
+    .subscribe-input::placeholder {
+        color: #888;
+    }
+
+    .subscribe-input:focus {
+        border-color: #6A0203;
+    }
+
+.subscribe-button {
+    padding: 10px 30px;
+    border: 1px solid #523536;
+    border-radius: 9999px;
+    background-color: transparent;
+    color: #523536;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .subscribe-button:hover {
+        background-color: #6A0203;
+        color: white;
+    }

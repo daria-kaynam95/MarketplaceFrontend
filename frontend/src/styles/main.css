@@ -1,0 +1,10 @@
+﻿body {
+    margin: 0;
+    font-family: "Georgia", serif;
+    background: #f9f3ef;
+    color: #601919;
+}
+
+* {
+    box-sizing: border-box;
+}

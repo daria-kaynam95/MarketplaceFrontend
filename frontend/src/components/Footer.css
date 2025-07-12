@@ -1,0 +1,85 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Poppins:wght@300;400;500&display=swap');
+
+.site-footer {
+    background-color: #e8d8cd;
+    color: #5c3a2e;
+    padding: 40px 20px 20px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.footer-branding {
+    flex: 1 1 200px;
+    margin-bottom: 20px;
+}
+
+    .footer-branding h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        font-family: 'Libre Caslon Text', serif;
+    }
+
+    .footer-branding p {
+        font-size: 14px;
+        margin-bottom: 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .footer-branding .social-icons a {
+        margin-right: 10px;
+        color: #5c3a2e;
+        font-size: 18px;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+        .footer-branding .social-icons a:hover {
+            color: #a67c52; /* например, чуть светлее при наведении */
+        }
+
+.footer-links {
+    display: flex;
+    flex: 3 1 600px;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+    .footer-links h4 {
+        font-size: 16px;
+        margin-bottom: 10px;
+        font-family: 'Libre Caslon Text', serif;
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 6px;
+    }
+
+    .footer-links a {
+        color: #5c3a2e;
+        text-decoration: none;
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 12px;
+    font-family: 'Poppins', sans-serif;
+}
