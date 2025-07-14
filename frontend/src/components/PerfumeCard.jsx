@@ -4,6 +4,11 @@ import './PerfumeCard.css';
 const PerfumeCard = ({ image, brand, name, volume, price, badge }) => {
     return (
         <div className="perfume-card">
+            {/* Оверлей поверх карточки */}
+            <div className="overlay">
+                <div className="add-to-cart">Add to Cart</div>
+            </div>
+
             <div className="image-container">
                 {badge && <span className="perfume-badge">{badge}</span>}
                 <img src={image} alt={name} className="perfume-image" />
@@ -23,3 +28,4 @@ const PerfumeCard = ({ image, brand, name, volume, price, badge }) => {
 };
 
 export default PerfumeCard;
+

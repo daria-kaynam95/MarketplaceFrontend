@@ -1,6 +1,7 @@
 ﻿import React, { useState } from "react";
 import "./Header.css";
 import { FiSearch } from "react-icons/fi";
+import { FaHeart } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
 function Header() {
@@ -13,8 +14,13 @@ function Header() {
     };
 
     const handleProfileClick = () => {
-        navigate("/signup");
+        navigate("/register");
     };
+
+    const handleFavoritesClick = () => {
+        navigate("/favorites");
+    };
+
 
     return (
         <header className="header">
@@ -69,7 +75,7 @@ function Header() {
                     </span>
 
                     {/* Избранное */}
-                    <span className="icon">
+                    <span className="icon" onClick={handleFavoritesClick} style={{ cursor: "pointer" }}>
                         <svg viewBox="0 0 24 24" className="heart-icon" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.5 4.5C18.706 4.5 20.5 6.294 20.5 8.5C20.5 13.169 14.957 17.441 12 19.523C9.043 17.441 3.5 13.169 3.5 8.5C3.5 6.294 5.294 4.5 7.5 4.5C8.14231 4.50145 8.77487 4.65716 9.34445 4.95405C9.91403 5.25093 10.404 5.68029 10.773 6.206L12 7.953L13.227 6.207C13.5959 5.68111 14.0858 5.25155 14.6554 4.95449C15.225 4.65743 15.8576 4.50156 16.5 4.5Z" />
                         </svg>

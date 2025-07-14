@@ -20,7 +20,8 @@ import CatalogMen from "./components/CatalogMen";
 
 import ScrollToTop from "./components/ScrollToTop";
 
-import SignInForm from "./components/SignInForm";
+import RegisterForm from "./components/RegisterForm"; 
+import FavoriteFragrances from "./components/FavoriteFragrances";
 
 import "./styles/main.css";
 
@@ -49,7 +50,8 @@ function App() {
                 />
                 <Route path="/catalog-women" element={<CatalogWoman />} />
                 <Route path="/catalog-men" element={<CatalogMen />} />
-                <Route path="/signup" element={<SignInForm />} />
+                <Route path="/register" element={<RegisterForm />} /> 
+                <Route path="/favorites" element={<FavoriteFragrances />} />
             </Routes>
             <Footer />
         </>
@@ -75,32 +77,40 @@ function App() {
             <Footer />
         </>
     );
-
-export default App;*/
-
-//=========================================================================
-
-//панель входа в акк
-
-/*import React from "react";
-import Header from "./components/Header";
-import SignInForm from "./components/SignInForm";
-import Footer from "./components/Footer";
-function App() {
-    return (
-        <div>
-            <Header />
-            <SignInForm />
-            <Footer />
-        </div>
-    );
 }
 
 export default App;*/
 
 //=========================================================================
 
-// профиль пользователя + история заказов + настройки профиля + израбнные + сравнение 
+//панель входа в акк + профиль пользователя 
+
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import SignInForm from "./components/SignInForm";
+import UserProfile from "./components/UserProfile";
+
+function App() {
+    return (
+        <div>
+            <Header />
+            <Routes>
+                <Route path="/" element={<SignInForm />} />
+                <Route path="/user-profile" element={<UserProfile />} />
+            </Routes>
+            <Footer />
+        </div>
+    );
+}
+
+export default App;
+
+
+//=========================================================================
+
+// профиль пользователя + история заказов + настройки профиля + израбнные + сравнение + вход акк
 // вероятно нужен бэкенд для продолжениее работы (??)
 
 /*import React from "react";
@@ -129,7 +139,7 @@ export default App;*/
 //=========================================================================
 
 // корзина - оформление заказа
-import React from "react";
+/*import React from "react";
 import Header from "./components/Header";
 import CheckoutPage from "./components/CheckoutPage";
 import Footer from "./components/Footer";
@@ -144,5 +154,5 @@ function App() {
     );
 }
 
-export default App;
+export default App;*/
 

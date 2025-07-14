@@ -3,19 +3,30 @@ import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import "./SignInForm.css";
 
 function SignInForm() {
-    const [emailOrPhone, setEmailOrPhone] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("/api/login", { email: emailOrPhone });
+            const response = await axios.post(
+                "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/login",
+                { email, password }
+            );
+
+            const { token } = response.data;
+            localStorage.setItem("authToken", token);
             toast.success("Login successful!");
-            console.log(response.data);
+            navigate("/user-profile");
         } catch (error) {
-            toast.error("Login failed. Please try again.");
+            toast.error(
+                error.response?.data?.message || "Login failed. Please try again."
+            );
             console.error(error);
         }
     };
@@ -37,9 +48,19 @@ function SignInForm() {
                 <div className="input-group">
                     <input
                         type="text"
-                        placeholder="Enter your email address or phone number"
-                        value={emailOrPhone}
-                        onChange={(e) => setEmailOrPhone(e.target.value)}
+                        placeholder="Enter your email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+
+                <div className="input-group">
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                 </div>
@@ -68,6 +89,3 @@ function SignInForm() {
 }
 
 export default SignInForm;
-
-
-

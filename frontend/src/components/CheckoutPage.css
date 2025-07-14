@@ -6,7 +6,7 @@
 
 .checkout-title {
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 300;
     margin-bottom: 30px;
     font-family: 'Libre Caslon Text', sans-serif;
     text-align: center;
@@ -20,12 +20,11 @@
 
 .order-summary {
     background-color: #fff8f7;
-    padding: 30px;
+    padding: 5px;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
 }
 
 .return-button {
@@ -212,14 +211,14 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    color: #5b3020; /* Тёмно-коричневый текст */
+    color: #5b3020; 
 }
 
     .custom-checkbox input[type="checkbox"] {
         appearance: none;
         width: 18px;
         height: 18px;
-        border: 2px solid #7b2e2e; /* Бордовая рамка */
+        border: 2px solid #7b2e2e; 
         border-radius: 4px;
         margin-right: 10px;
         cursor: pointer;

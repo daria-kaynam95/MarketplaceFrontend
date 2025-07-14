@@ -11,6 +11,8 @@ function UserProfile({ user }) {
 
     const handleLogout = () => {
         console.log("Logged out");
+        localStorage.removeItem("authToken");
+        window.location.href = "/signin";
     };
 
     return (

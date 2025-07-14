@@ -1,6 +1,6 @@
 ﻿import { useState } from "react";
 import axios from "axios";
-import { toast, ToastContainer } from "react-toastify";
+// import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./RegisterForm.css";
 
@@ -11,13 +11,45 @@ function RegisterForm() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log({ firstName, lastName, email, password, confirmPassword });
+
+        // Проверка на совпадение паролей
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        const userData = {
+            nickname: firstName,
+            //lastName,
+            email,
+            password,
+        };
+
+        try {
+            const response = await axios.post("https://marketplaceapi20250628113538.azurewebsites.net/api/auth/register", userData, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status === 200 || response.status === 201) {
+                console.log("Регистрация прошла успешно:", response.data);
+                // toast.success("Registration successful!");
+            } else {
+                console.warn("Неожиданный ответ:", response);
+                // toast.warning("Unexpected response from server");
+            }
+        } catch (error) {
+            console.error("Ошибка при регистрации:", error);
+            // toast.error("Registration failed");
+        }
     };
 
     return (
         <div className="register-container">
+            {/* <ToastContainer /> */}
             <form onSubmit={handleSubmit} className="register-form">
                 <h2 className="register-title">NEW USER REGISTRATION</h2>
                 <p className="register-subtitle">

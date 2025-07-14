@@ -10,6 +10,11 @@ const PerfumeCardMen = ({ image, brand, name, volume, price, badge, variant, gap
 
     return (
         <div className={`perfume-card-men ${variant}`}>
+            {/* Оверлей — окрашивает всю карточку */}
+            <div className="overlay-men">
+                <div className="add-to-cart-men">Add to Cart</div>
+            </div>
+
             <div className="image-container-men">
                 {badge && (
                     <span className={`perfume-badge-men ${badgeClass || ''}`}>{badge}</span>
@@ -33,7 +38,6 @@ const PerfumeCardMen = ({ image, brand, name, volume, price, badge, variant, gap
 };
 
 export default PerfumeCardMen;
-
 
 
 
