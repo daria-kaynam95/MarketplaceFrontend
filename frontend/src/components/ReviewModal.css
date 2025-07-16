@@ -1,0 +1,88 @@
+﻿.review-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.review-modal {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 420px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.review-modal h2 {
+    margin-bottom: 1rem;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.stars {
+    font-size: 24px;
+    margin: 0.5rem 0;
+}
+
+    .stars span {
+        cursor: pointer;
+        color: #ccc;
+    }
+
+    .stars .filled {
+        color: gold;
+    }
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    margin-top: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    resize: vertical;
+}
+
+.submit-button {
+    margin-top: 1rem;
+    background-color: #6e4b8e;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+    .submit-button:hover {
+        background-color: #5a3b78;
+    }

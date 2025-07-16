@@ -1,6 +1,6 @@
-﻿//глав. страницы + каталога для женщин + каталог для мужчин + вход в акк
-/*import React from "react";
-import { Routes, Route } from "react-router-dom";
+﻿//глав. страницы + каталога для женщин + каталог для мужчин + вход в акк + профиль пользователя 
+import React, { useState } from "react";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -17,19 +17,21 @@ import Footer from "./components/Footer";
 
 import CatalogWoman from "./components/CatalogWoman";
 import CatalogMen from "./components/CatalogMen";
-
 import ScrollToTop from "./components/ScrollToTop";
 
-import RegisterForm from "./components/RegisterForm"; 
+import SignInForm from "./components/SignInForm";
+import UserProfile from "./components/UserProfile";
 import FavoriteFragrances from "./components/FavoriteFragrances";
 
 import "./styles/main.css";
 
 function App() {
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
     return (
         <>
             <ScrollToTop />
-            <Header />
+            <Header isAuthenticated={isAuthenticated} />
             <Routes>
                 <Route
                     path="/"
@@ -50,7 +52,25 @@ function App() {
                 />
                 <Route path="/catalog-women" element={<CatalogWoman />} />
                 <Route path="/catalog-men" element={<CatalogMen />} />
-                <Route path="/register" element={<RegisterForm />} /> 
+
+                <Route
+                    path="/signin"
+                    element={
+                        isAuthenticated ? (
+                            <UserProfile
+                                setIsAuthenticated={setIsAuthenticated}
+                            />
+                        ) : (
+                            <SignInForm setIsAuthenticated={setIsAuthenticated} />
+                        )
+                    }
+                />
+                <Route
+                    path="/user-profile"
+                    element={
+                        <UserProfile setIsAuthenticated={setIsAuthenticated} />
+                    }
+                />
                 <Route path="/favorites" element={<FavoriteFragrances />} />
             </Routes>
             <Footer />
@@ -58,7 +78,8 @@ function App() {
     );
 }
 
-export default App;*/
+export default App;
+
 
 //=========================================================================
 
@@ -85,7 +106,7 @@ export default App;*/
 
 //панель входа в акк + профиль пользователя 
 
-import React from "react";
+/*import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -105,36 +126,8 @@ function App() {
     );
 }
 
-export default App;
-
-
-//=========================================================================
-
-// профиль пользователя + история заказов + настройки профиля + израбнные + сравнение + вход акк
-// вероятно нужен бэкенд для продолжениее работы (??)
-
-/*import React from "react";
-import Header from "./components/Header";
-import UserProfile from "./components/UserProfile";
-import Footer from "./components/Footer";
-
-function App() {
-    // Пример пользователя
-    const userData = {
-        fullName: "Анна Иванова",
-        email: "anna@example.com"
-    };
-
-    return (
-        <div>
-            <Header />
-            <UserProfile user={userData} />
-            <Footer />
-        </div>
-    );
-}
-
 export default App;*/
+
 
 //=========================================================================
 

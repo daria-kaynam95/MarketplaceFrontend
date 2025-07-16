@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,14 +13,22 @@ function SignInForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
             const response = await axios.post(
                 "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/login",
                 { email, password }
             );
 
-            const { token } = response.data;
+            console.log("Login response:", response.data); // лог
+
+            // предполагаем, что backend возвращает token, userId и userName
+            const { token, id } = response.data;
+
+            // сохраняем в localStorage
             localStorage.setItem("authToken", token);
+            if (id) localStorage.setItem("userId", id);
+
             toast.success("Login successful!");
             navigate("/user-profile");
         } catch (error) {
@@ -65,24 +73,29 @@ function SignInForm() {
                     />
                 </div>
 
-                <button type="submit" className="submit-button">Continue</button>
+                <button type="submit" className="submit-button">
+                    Continue
+                </button>
 
                 <p className="divider">OR</p>
 
-                <button className="social-button google">
+                <button type="button" className="social-button google">
                     <FaGoogle className="social-icon" />
                     Continue with Google
                 </button>
 
-                <button className="social-button facebook">
+                <button type="button" className="social-button facebook">
                     <FaFacebookF className="social-icon" />
                     Continue with Facebook
                 </button>
 
                 <p className="policy-text">
-                    By continuing, you agree to our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms & Conditions</a>.
+                    By continuing, you agree to our{" "}
+                    <a href="/privacy">Privacy Policy</a> and{" "}
+                    <a href="/terms">Terms &amp; Conditions</a>.
                 </p>
             </form>
+
             <ToastContainer />
         </div>
     );

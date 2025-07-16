@@ -25,14 +25,15 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.05); 
+    border-radius: 175px / 100px;
+    background-color: rgba(236, 222, 214, 0.7);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
     z-index: 2;
-    border-radius: 20px; 
+    pointer-events: none;
 }
 
 .perfume-card:hover .overlay {
@@ -40,14 +41,12 @@
 }
 
 .add-to-cart {
-    background-color: #fff;
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-weight: 500;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    z-index: 3;
+    font-size: 1.2rem;
+    color: #731718;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    pointer-events: none;
 }
 
 
@@ -75,7 +74,7 @@
 
 .perfume-card:nth-child(2) .perfume-image {
     width: 210px;
-    height: 289px;
+    height: 240px;
     top: 119px;
     position: relative;
 }

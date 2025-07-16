@@ -1,8 +1,17 @@
-﻿import React from "react";
+﻿import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import "./EditProfilePanel.css";
 
-const EditProfilePanel = () => {
+const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
+    const [firstName, setFirstName] = useState(user?.firstName || "");
+    const [lastName, setLastName] = useState(user?.lastName || "");
+    const [address1, setAddress1] = useState(user?.address1 || "");
+    const [address2, setAddress2] = useState(user?.address2 || "");
+    const [country, setCountry] = useState(user?.country || "USA");
+    const [state, setState] = useState(user?.state || "");
+    const [city, setCity] = useState(user?.city || "");
+    const [zip, setZip] = useState(user?.zip || "");
+
     const PencilIcon = () => (
         <svg
             width="15"
@@ -20,11 +29,32 @@ const EditProfilePanel = () => {
         </svg>
     );
 
+    const handleSave = () => {
+        const updatedUser = {
+            ...user,
+            firstName,
+            lastName,
+            address1,
+            address2,
+            country,
+            state,
+            city,
+            zip,
+        };
+        onUpdateProfile(updatedUser);
+    };
+
     return (
-        <div className="edit-profile-container">
+        <div className="edit-profile-wrapper">
             <div className="panel-wrapper">
                 <h1 className="edit-profile-title">EDIT PROFILE</h1>
-                <p className="edit-profile-subtitle">Go Back To Profile</p>
+                <p
+                    className="edit-profile-subtitle"
+                    onClick={onCancel}
+                    style={{ cursor: "pointer" }}
+                >
+                    Go Back To Profile
+                </p>
 
                 <div className="edit-profile-content">
                     {/* Левая колонка */}
@@ -39,7 +69,13 @@ const EditProfilePanel = () => {
                         <div className="form-group short-field">
                             <label className="label">First Name:</label>
                             <div className="input-container">
-                                <input type="text" placeholder="UserFirstName" className="input" />
+                                <input
+                                    type="text"
+                                    placeholder="UserFirstName"
+                                    className="input"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                />
                                 <PencilIcon />
                             </div>
                         </div>
@@ -47,24 +83,36 @@ const EditProfilePanel = () => {
                         <div className="form-group short-field">
                             <label className="label">Last Name:</label>
                             <div className="input-container">
-                                <input type="text" placeholder="UserLastName" className="input" />
+                                <input
+                                    type="text"
+                                    placeholder="UserLastName"
+                                    className="input"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                />
                                 <PencilIcon />
                             </div>
                         </div>
 
                         <div className="form-group static-group">
                             <span className="label-inline">Email:</span>
-                            <span className="static-inline">youremailaddress@gmail.com</span>
-                            <div className="static-hint">Email used for login can’t be changed</div>
+                            <span className="static-inline">{user?.email || "email@example.com"}</span>
+                            <div className="static-hint">
+                                Email used for login can’t be changed
+                            </div>
                         </div>
 
                         <div className="form-group static-group">
                             <span className="label-inline">Phone Number:</span>
-                            <span className="static-inline">+1 (000)-000-00</span>
-                            <div className="static-hint">Phone number used for login can’t be changed</div>
+                            <span className="static-inline">{user?.phone || "+1 (000)-000-00"}</span>
+                            <div className="static-hint">
+                                Phone number used for login can’t be changed
+                            </div>
                         </div>
 
-                        <button className="save-button">Save Changes</button>
+                        <button className="save-button" onClick={handleSave}>
+                            Save Changes
+                        </button>
                     </div>
 
                     {/* Правая колонка */}
@@ -79,7 +127,13 @@ const EditProfilePanel = () => {
                         <div className="form-group">
                             <label className="label">Address Line 1:</label>
                             <div className="input-container">
-                                <input type="text" placeholder="123 Madison Avenue" className="input long-field" />
+                                <input
+                                    type="text"
+                                    placeholder="123 Madison Avenue"
+                                    className="input long-field"
+                                    value={address1}
+                                    onChange={(e) => setAddress1(e.target.value)}
+                                />
                                 <PencilIcon />
                             </div>
                         </div>
@@ -87,7 +141,13 @@ const EditProfilePanel = () => {
                         <div className="form-group">
                             <label className="label">Address Line 2:</label>
                             <div className="input-container">
-                                <input type="text" placeholder="Apt E5" className="input long-field" />
+                                <input
+                                    type="text"
+                                    placeholder="Apt E5"
+                                    className="input long-field"
+                                    value={address2}
+                                    onChange={(e) => setAddress2(e.target.value)}
+                                />
                                 <PencilIcon />
                             </div>
                         </div>
@@ -96,7 +156,11 @@ const EditProfilePanel = () => {
                             <div className="form-group short-field country-field">
                                 <label className="label">Country:</label>
                                 <div className="input-container">
-                                    <select className="select">
+                                    <select
+                                        className="select"
+                                        value={country}
+                                        onChange={(e) => setCountry(e.target.value)}
+                                    >
                                         <option>USA</option>
                                         <option>Canada</option>
                                         <option>Germany</option>
@@ -107,7 +171,13 @@ const EditProfilePanel = () => {
                             <div className="form-group short-field state-field">
                                 <label className="label">State:</label>
                                 <div className="input-container">
-                                    <input type="text" placeholder="NY" className="input" />
+                                    <input
+                                        type="text"
+                                        placeholder="NY"
+                                        className="input"
+                                        value={state}
+                                        onChange={(e) => setState(e.target.value)}
+                                    />
                                 </div>
                             </div>
                         </div>
@@ -116,7 +186,13 @@ const EditProfilePanel = () => {
                             <div className="form-group short-field city-field">
                                 <label className="label">City:</label>
                                 <div className="input-container">
-                                    <input type="text" placeholder="New York" className="input" />
+                                    <input
+                                        type="text"
+                                        placeholder="New York"
+                                        className="input"
+                                        value={city}
+                                        onChange={(e) => setCity(e.target.value)}
+                                    />
                                     <PencilIcon />
                                 </div>
                             </div>
@@ -124,7 +200,13 @@ const EditProfilePanel = () => {
                             <div className="form-group short-field zip-field">
                                 <label className="label">ZIP / Postal Code:</label>
                                 <div className="input-container">
-                                    <input type="text" placeholder="12345" className="input" />
+                                    <input
+                                        type="text"
+                                        placeholder="12345"
+                                        className="input"
+                                        value={zip}
+                                        onChange={(e) => setZip(e.target.value)}
+                                    />
                                     <PencilIcon />
                                 </div>
                             </div>
