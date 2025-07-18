@@ -1,5 +1,4 @@
-﻿/// <reference path="authcontext.jsx" />
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import './Sidebar.css';
 
 const Sidebar = () => {

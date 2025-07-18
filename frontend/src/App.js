@@ -1,6 +1,6 @@
 ﻿//глав. страницы + каталога для женщин + каталог для мужчин + вход в акк + профиль пользователя 
-import React, { useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -22,16 +22,19 @@ import ScrollToTop from "./components/ScrollToTop";
 import SignInForm from "./components/SignInForm";
 import UserProfile from "./components/UserProfile";
 import FavoriteFragrances from "./components/FavoriteFragrances";
+import PerfumeDetail from "./components/PerfumeDetail";
 
 import "./styles/main.css";
 
-function App() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+// Подключаем контекст авторизации
+import { AuthProvider } from "./context/AuthContext";
 
+function App() {
     return (
-        <>
+        <AuthProvider>
             <ScrollToTop />
-            <Header isAuthenticated={isAuthenticated} />
+            <Header />
+
             <Routes>
                 <Route
                     path="/"
@@ -50,36 +53,22 @@ function App() {
                         </>
                     }
                 />
+
                 <Route path="/catalog-women" element={<CatalogWoman />} />
                 <Route path="/catalog-men" element={<CatalogMen />} />
+                <Route path="/perfume/:id" element={<PerfumeDetail />} />
 
-                <Route
-                    path="/signin"
-                    element={
-                        isAuthenticated ? (
-                            <UserProfile
-                                setIsAuthenticated={setIsAuthenticated}
-                            />
-                        ) : (
-                            <SignInForm setIsAuthenticated={setIsAuthenticated} />
-                        )
-                    }
-                />
-                <Route
-                    path="/user-profile"
-                    element={
-                        <UserProfile setIsAuthenticated={setIsAuthenticated} />
-                    }
-                />
+                <Route path="/signin" element={<SignInForm />} />
+                <Route path="/user-profile" element={<UserProfile />} />
                 <Route path="/favorites" element={<FavoriteFragrances />} />
             </Routes>
+
             <Footer />
-        </>
+        </AuthProvider>
     );
 }
 
 export default App;
-
 
 //=========================================================================
 

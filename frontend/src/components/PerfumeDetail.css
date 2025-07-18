@@ -1,0 +1,181 @@
+﻿.perfume-detail-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 60px;
+    background-color: #fef9f4;
+    flex-wrap: wrap;
+}
+
+/* Левая колонка: кнопка + картинка */
+.perfume-detail-left {
+    margin-left: 125px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.perfume-detail-image-block {
+    width: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+
+.perfume-detail-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 0px;
+}
+
+.perfume-detail-card {
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%);
+    padding: 30px;
+    height: 350px;
+    width: 850px;
+    border-radius: 30px;
+    display: flex;
+    margin-left: 150px;
+    flex-direction: column;
+}
+
+.perfume-detail-brand {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #5c4033;
+    margin-bottom: 5px;
+}
+
+.perfume-detail-name {
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 2rem;
+    color: #5c2d24;
+    margin: 0;
+}
+
+.perfume-detail-volume-dropdown {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    color: #8C6A5E;
+    margin: 10px 0;
+}
+
+.perfume-detail-description {
+
+    color: #5a4741;
+    font-size: 0.95rem;
+    margin: 10px 0 20px 0;
+    line-height: 1.5;
+}
+
+.perfume-detail-price {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #731718;
+    margin: 10px 0;
+}
+
+.perfume-detail-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.quantity-controls {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    background-color: #f1e7d2;
+    border-radius: 20px;
+    padding: 5px 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #8C6A5E;
+}
+
+    .quantity-controls button {
+        background: none;
+        border: none;
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: #8C6A5E;
+        cursor: pointer;
+    }
+
+    .quantity-controls span {
+        margin: 0 10px;
+        min-width: 20px;
+        text-align: center;
+    }
+
+.perfume-detail-add-to-cart {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 24px;
+    background-color: #e8ddc6;
+    color: #5c4033;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .perfume-detail-add-to-cart:hover {
+        background-color: #d6c7af;
+    }
+
+.perfume-detail-review-btn {
+    font-family: 'Poppins', sans-serif;
+    padding: 12px 24px;
+    background-color: #f6eee3;
+    color: #731718;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .perfume-detail-review-btn:hover {
+        background-color: #e5dac5;
+    }
+
+.perfume-detail-reviews {
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    margin-top: 50px;
+    padding: 0 60px;
+}
+
+.review-card {
+    background-color: #f5eadd;
+    padding: 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+
+
+.favorite-button {
+    margin-left: -145px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background-color 0.3s;
+}

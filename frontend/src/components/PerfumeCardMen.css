@@ -1,7 +1,7 @@
 ﻿.perfume-card-men {
+    width: 370px;
+    height: 450px;
     position: relative;
-    width: 290px;
-    height: 390px;
     border-radius: 175px / 100px;
     overflow: hidden;
     background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
@@ -286,7 +286,7 @@
 
 /* Индивидуальные бейджи */
 .badge1 {
-    top: 1px;
+    top: 10px;
     left: 79px;
     font-size: 15px;
     padding: 3px 17px;

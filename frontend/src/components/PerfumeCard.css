@@ -1,9 +1,20 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
+.perfume-link {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    color: inherit;
+    display: block;
+}
+
 .perfume-card {
-    position: relative;
+    /*text-decoration: none; 
+    color: inherit; 
+    display: inline-block;*/
     width: 290px;
     height: 390px;
+    position: relative;
     border-radius: 175px / 100px;
     overflow: hidden;
     background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
@@ -49,7 +60,6 @@
     pointer-events: none;
 }
 
-
 .image-container {
     position: relative;
 }
@@ -74,8 +84,8 @@
 
 .perfume-card:nth-child(2) .perfume-image {
     width: 210px;
-    height: 240px;
-    top: 119px;
+    height: 299px;
+    top: 127px;
     position: relative;
 }
 
@@ -126,7 +136,7 @@
     width: 260px;
     height: 275px;
     top: 130px;
-    left: -5px;
+    left: -10px;
     position: relative;
 }
 

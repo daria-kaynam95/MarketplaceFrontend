@@ -1,15 +1,19 @@
-﻿import React, { useState } from "react";
+﻿import React, { useState, useContext } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 import "./SignInForm.css";
 
 function SignInForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
+
+    // Получаем функцию login из контекста
+    const { login } = useContext(AuthContext);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,22 +24,22 @@ function SignInForm() {
                 { email, password }
             );
 
-            console.log("Login response:", response.data); // лог
+            console.log("Login response:", response.data);
 
-            // предполагаем, что backend возвращает token, userId и userName
             const { token, id } = response.data;
 
-            // сохраняем в localStorage
-            localStorage.setItem("authToken", token);
-            if (id) localStorage.setItem("userId", id);
-
-            toast.success("Login successful!");
-            navigate("/user-profile");
+            if (token && id) {
+                login(token, id); // сохраняем в контексте
+                toast.success("Login successful!");
+                navigate("/user-profile");
+            } else {
+                toast.error("Login failed: token or user ID missing.");
+            }
         } catch (error) {
+            console.error("Login error:", error);
             toast.error(
                 error.response?.data?.message || "Login failed. Please try again."
             );
-            console.error(error);
         }
     };
 
@@ -55,7 +59,7 @@ function SignInForm() {
 
                 <div className="input-group">
                     <input
-                        type="text"
+                        type="email"
                         placeholder="Enter your email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -92,7 +96,7 @@ function SignInForm() {
                 <p className="policy-text">
                     By continuing, you agree to our{" "}
                     <a href="/privacy">Privacy Policy</a> and{" "}
-                    <a href="/terms">Terms &amp; Conditions</a>.
+                    <a href="/terms">Terms & Conditions</a>.
                 </p>
             </form>
 
