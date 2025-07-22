@@ -1,8 +1,10 @@
-﻿import React, { useState, useContext } from "react";
+﻿
+import React, { useState, useContext } from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { FiSearch } from "react-icons/fi";
 import { AuthContext } from "../context/AuthContext";
+
 
 function Header() {
     const [showSearch, setShowSearch] = useState(false);

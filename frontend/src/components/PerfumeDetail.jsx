@@ -2,7 +2,8 @@
 import { useParams } from 'react-router-dom';
 import perfumes from '../data/perfumeAllData';
 import ReviewModal from '../components/ReviewModal';
-import { AiOutlineHeart } from 'react-icons/ai'; 
+import ScentIntelChart from '../components/ScentIntelChart';
+import { AiOutlineHeart } from 'react-icons/ai';
 import './PerfumeDetail.css';
 
 const PerfumeDetail = () => {
@@ -42,9 +43,10 @@ const PerfumeDetail = () => {
         return <div className="not-found">Product not found</div>;
     }
 
+    const isEvenImage = perfume.compositionImage.includes('compo2');
+
     return (
         <div className="perfume-detail-wrapper">
-            {/* Левая часть — кнопка и изображение */}
             <div className="perfume-detail-left">
                 <button className="favorite-button">
                     <AiOutlineHeart size={20} style={{ marginRight: '6px' }} />
@@ -57,7 +59,6 @@ const PerfumeDetail = () => {
                 />
             </div>
 
-            {/* Правая часть — карточка */}
             <div className="perfume-detail-card">
                 <div className="perfume-detail-info">
                     <p className="perfume-detail-brand">{perfume.brand}</p>
@@ -94,7 +95,59 @@ const PerfumeDetail = () => {
                 </div>
             </div>
 
-            {/* Модалка */}
+            {perfume.scentIntel && perfume.compositionImage && (
+                <div className="perfume-intel-composition">
+                    <div className="intel-block">
+                        <h3>Scent Intel</h3>
+                        <ScentIntelChart
+                            scentIntel={perfume.scentIntel}
+                            type={parseInt(perfume.id.replace(/\D/g, '')) % 2 === 0 ? 'even' : 'odd'}
+                        />
+                    </div>
+
+                    <div className="composition-block">
+                        <h3>Composition</h3>
+                        <div className="composition-image-wrapper">
+                            <img
+                                src={perfume.compositionImage}
+                                alt="Composition"
+                                className="composition-image"
+                            />
+
+                            {/* Условные линии */}
+                            {isEvenImage ? (
+                                <>
+                                    <div className="line line-ambrette"></div>
+                                    <div className="line line-fruits"></div>
+                                    <div className="line line-rose"></div>
+                                </>
+                            ) : (
+                                <>
+                                    <div className="line line-citrus"></div>
+                                    <div className="line line-neroli"></div>
+                                </>
+                            )}
+
+                            {/* Условные подписи */}
+                            <div className="composition-labels">
+                                {isEvenImage ? (
+                                    <>
+                                        <span className="label ambrette">Ambrette</span>
+                                        <span className="label fruits">Fruits</span>
+                                        <span className="label rose">Rose</span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span className="label citrus">Citrus</span>
+                                        <span className="label neroli">Neroli</span>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
             {showReviewModal && (
                 <ReviewModal
                     onClose={() => setShowReviewModal(false)}
@@ -103,7 +156,6 @@ const PerfumeDetail = () => {
                 />
             )}
 
-            {/* Отзывы */}
             <div className="perfume-detail-reviews">
                 <h3>Reviews</h3>
                 {reviews.length === 0 ? (

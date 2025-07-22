@@ -150,7 +150,7 @@ function UserProfile() {
                 )}
 
                 {selectedTab === "edit" && user && (
-                    <EditProfilePanel user={user} onUpdate={handleUpdateProfile} />
+                    <EditProfilePanel user={user} onUpdateProfile={handleUpdateProfile} />
                 )}
 
                 {selectedTab === "orders" && <OrderHistory userId={userId} />}

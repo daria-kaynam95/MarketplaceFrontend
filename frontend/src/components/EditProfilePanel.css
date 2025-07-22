@@ -50,11 +50,12 @@
     width: 50%;
 }
 
-/* Фото */
+/* Фото профиля */
 .profile-photo {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    gap: 12px;
 }
 
 .profile-photo-icon {
@@ -70,10 +71,18 @@
 }
 
 .change-photo-btn {
-    margin-left: 12px;
     font-size: 13px;
     text-decoration: underline;
     cursor: pointer;
+}
+
+/* Превью аватарки */
+.avatar-preview {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ccc;
 }
 
 /* Поля ввода */
@@ -82,7 +91,7 @@
 }
 
 .short-field {
-    max-width: 260px;
+    max-width: 200px;
 }
 
 .label {
@@ -108,12 +117,12 @@
 }
 
 .long-field {
-    max-width: 515px !important;
+    max-width: 555px !important;
 }
 
 .edit-icon {
     position: absolute;
-    right: 4px;
+    right: 5px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
@@ -166,7 +175,7 @@
     justify-content: space-between;
     align-items: center;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
     margin-bottom: 10px;
 }
 
@@ -197,18 +206,18 @@
 /* Специфичные размеры для адресных полей */
 .country-field .input,
 .country-field .select {
-    width: 200px !important;
+    width: 175px !important;
     max-width: 200px !important;
 }
 
 .state-field .input {
-    max-width: 155px !important;
+    max-width: 175px !important;
 }
 
 .city-field .input {
-    max-width: 155px !important;
+    max-width: 175px !important;
 }
 
 .zip-field .input {
-    max-width: 155px;
+    max-width: 175px;
 }

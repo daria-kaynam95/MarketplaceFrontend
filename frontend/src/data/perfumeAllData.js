@@ -26,20 +26,211 @@ import pmen10 from '../assets/mpefrume/pmen10.png';
 import pmen11 from '../assets/mpefrume/pmen11.png';
 import pmen12 from '../assets/mpefrume/pmen12.png';
 
+//Композиции
+import composition1 from '../assets/compositions/compo1.png';
+import composition2 from '../assets/compositions/compo2.png';
+
 const perfumeAllData = [
     // Женские
-    { id: 'w1', image: perfume1, brand: 'Chanel', name: 'EAU DE COLOGNE', volume: '200 ml', price: 505, badge: 'NEW' },
-    { id: 'w2', image: perfume2, brand: 'Gucci', name: 'GUILTY ABSOLUTE', volume: '200 ml', price: 240, badge: 'HIT' },
-    { id: 'w3', image: perfume3, brand: 'Byredo', name: 'BAL D`AFRIQUE', volume: '200 ml', price: 300 },
-    { id: 'w4', image: perfume4, brand: 'Kilian Paris', name: 'POSES ON ICE', volume: '50 ml', price: 280 },
-    { id: 'w5', image: perfume5, brand: 'Lancome', name: 'O DE LANCOME', volume: '50 ml', price: 200 },
-    { id: 'w6', image: perfume6, brand: 'Lancome', name: 'LANCOME HYPNOSE', volume: '30 ml', price: 220, badge: 'HIT' },
-    { id: 'w7', image: perfume7, brand: 'Tom Ford', name: 'BOIS PACIFIQUE', volume: '100 ml', price: 400, badge: 'NEW' },
-    { id: 'w8', image: perfume8, brand: 'Tom Ford', name: 'LOST CHERRY', volume: '100 ml', price: 500, badge: 'HIT' },
-    { id: 'w9', image: perfume9, brand: 'Chanel', name: 'CHANCE EAU TENDRE', volume: '100 ml', price: 200 },
-    { id: 'w10', image: perfume10, brand: 'Versace', name: 'EROS POUR FEMME', volume: '100 ml', price: 220 },
-    { id: 'w11', image: perfume11, brand: 'Chalen', name: 'DYLAN TURQUOISE', volume: '30 ml', price: 150, badge: 'HIT' },
-    { id: 'w12', image: perfume12, brand: 'Byredo', name: 'TOBACCO MANDARIN', volume: '50 ml', price: 200, badge: 'NEW' },
+    {
+        id: 'w1',
+        image: perfume1,
+        brand: 'Chanel',
+        name: 'EAU DE COLOGNE',
+        volume: '200 ml',
+        price: 505,
+        badge: 'NEW',
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w2',
+        image: perfume2,
+        brand: 'Gucci',
+        name: 'GUILTY ABSOLUTE',
+        volume: '200 ml',
+        price: 240,
+        badge: 'HIT',
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
+    {
+        id: 'w3',
+        image: perfume3,
+        brand: 'Byredo',
+        name: 'BAL D`AFRIQUE',
+        volume: '200 ml',
+        price: 300,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w4',
+        image: perfume4,
+        brand: 'Kilian Paris',
+        name: 'POSES ON ICE',
+        volume: '50 ml',
+        price: 280,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
+    {
+        id: 'w5',
+        image: perfume5,
+        brand: 'Lancome',
+        name: 'O DE LANCOME',
+        volume: '50 ml',
+        price: 200,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w6',
+        image: perfume6,
+        brand: 'Lancome',
+        name: 'LANCOME HYPNOSE',
+        volume: '30 ml',
+        price: 220,
+        badge: 'HIT',
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
+    {
+        id: 'w7',
+        image: perfume7,
+        brand: 'Tom Ford',
+        name: 'BOIS PACIFIQUE',
+        volume: '100 ml',
+        price: 400,
+        badge: 'NEW',
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w8',
+        image: perfume8,
+        brand: 'Tom Ford',
+        name: 'LOST CHERRY',
+        volume: '100 ml',
+        price: 500,
+        badge: 'HIT',
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
+    {
+        id: 'w9',
+        image: perfume9,
+        brand: 'Chanel',
+        name: 'CHANCE EAU TENDRE',
+        volume: '100 ml',
+        price: 200,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w10',
+        image: perfume10,
+        brand: 'Versace',
+        name: 'EROS POUR FEMME',
+        volume: '100 ml',
+        price: 220,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
+    {
+        id: 'w11',
+        image: perfume11,
+        brand: 'Chalen',
+        name: 'DYLAN TURQUOISE',
+        volume: '30 ml',
+        price: 150,
+        badge: 'HIT',
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
+    },
+    {
+        id: 'w12',
+        image: perfume12,
+        brand: 'Byredo',
+        name: 'TOBACCO MANDARIN',
+        volume: '50 ml',
+        price: 200,
+        badge: 'NEW',
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,   
+            coffee: 2, 
+            berries: 4
+        },
+        compositionImage: composition2
+    },
 
     // Мужские
     {
@@ -53,6 +244,14 @@ const perfumeAllData = [
         badge: 'HIT',
         badgeClass: 'badge1',
         variant: 1,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm2',
@@ -63,6 +262,14 @@ const perfumeAllData = [
         volume: '50 ml',
         price: 200,
         variant: 2,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
     {
         id: 'm3',
@@ -75,6 +282,14 @@ const perfumeAllData = [
         badge: 'NEW',
         badgeClass: 'badge3',
         variant: 3,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm4',
@@ -85,6 +300,14 @@ const perfumeAllData = [
         volume: '50 ml',
         price: 177,
         variant: 4,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
     {
         id: 'm5',
@@ -95,6 +318,14 @@ const perfumeAllData = [
         volume: '100 ml',
         price: 375,
         variant: 5,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm6',
@@ -107,6 +338,14 @@ const perfumeAllData = [
         badge: 'HIT',
         badgeClass: 'badge6',
         variant: 6,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
     {
         id: 'm7',
@@ -119,6 +358,14 @@ const perfumeAllData = [
         badge: 'HIT',
         badgeClass: 'badge7',
         variant: 7,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm8',
@@ -129,6 +376,14 @@ const perfumeAllData = [
         volume: '200 ml',
         price: 484,
         variant: 8,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
     {
         id: 'm9',
@@ -141,6 +396,14 @@ const perfumeAllData = [
         badge: 'NEW',
         badgeClass: 'badge9',
         variant: 9,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm10',
@@ -151,6 +414,14 @@ const perfumeAllData = [
         volume: '100 ml',
         price: 260,
         variant: 10,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
     {
         id: 'm11',
@@ -163,6 +434,14 @@ const perfumeAllData = [
         badge: 'HIT',
         badgeClass: 'badge11',
         variant: 11,
+        scentIntel: {
+            neroli: 5,
+            lime: 4,
+            honey: 3,
+            grapefruit: 2,
+            orange: 4
+        },
+        compositionImage: composition1
     },
     {
         id: 'm12',
@@ -175,6 +454,14 @@ const perfumeAllData = [
         badge: 'NEW',
         badgeClass: 'badge12',
         variant: 12,
+        scentIntel: {
+            ambrette: 5,
+            rose: 5,
+            nectar: 3,
+            coffee: 2,
+            berries: 4
+        },
+        compositionImage: composition2
     },
 
 ];
