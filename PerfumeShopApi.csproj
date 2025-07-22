@@ -20,7 +20,7 @@
     <Folder Include="frontend\src\assets\notes\" />
     <Folder Include="frontend\src\assets\brands\" />
     <Folder Include="frontend\src\assets\wpefrume\" />
-    <Folder Include="frontend\src\data\" />
+    <Folder Include="frontend\src\assets\compositions\" />
   </ItemGroup>
 
 </Project>
