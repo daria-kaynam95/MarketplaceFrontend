@@ -1,6 +1,6 @@
 ﻿.checkout-container {
     padding: 40px;
-    background-color: #FFFAF8;
+    background-color: #fff8f5;
     font-family: 'Poppins', sans-serif;
 }
 
@@ -68,7 +68,7 @@
     .quantity-control button {
         background-color: #f1f1f1;
         border: none;
-        padding: 6px 12px;
+        padding: 10px 12px;
         border-radius: 8px;
         cursor: pointer;
     }
@@ -94,17 +94,17 @@
 
     .discount-input-group input {
         flex: 1;
-        padding: 10px;
-        border-radius: 10px;
+        padding: 15px;
+        border-radius: 60px;
         border: 1px solid #ddd;
     }
 
     .discount-input-group button {
-        padding: 10px 16px;
+        padding: 5px 45px;
         background-color: #b65a5a;
         color: white;
         border: none;
-        border-radius: 10px;
+        border-radius: 60px;
         cursor: pointer;
     }
 
@@ -148,7 +148,7 @@
 
     .checkout-form input {
         display: block;
-        padding: 10px 14px;
+        padding: 5.5px 5.5px;
         border: 1px solid #ccc;
         border-radius: 20px;
         width: 100%;
@@ -211,14 +211,14 @@
     align-items: center;
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
-    color: #5b3020; 
+    color: #5b3020;
 }
 
     .custom-checkbox input[type="checkbox"] {
         appearance: none;
         width: 18px;
         height: 18px;
-        border: 2px solid #7b2e2e; 
+        border: 2px solid #7b2e2e;
         border-radius: 4px;
         margin-right: 10px;
         cursor: pointer;
@@ -238,11 +238,10 @@
             transform: rotate(45deg);
         }
 
-
 .checkout-button {
-    background-color: #b65a5a;
-    color: white;
-    padding: 12px 20px;
+    background-color: #ECDED6;
+    color: #6A0203;
+    padding: 12px 10px;
     border: none;
     border-radius: 24px;
     font-size: 16px;

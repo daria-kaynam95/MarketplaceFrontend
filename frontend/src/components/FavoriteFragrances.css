@@ -1,43 +1,149 @@
 ﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&family=Poppins&display=swap');
 
 .favorite-container {
-    background-color: #fff9f6;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .favorite-title {
-    font-size: 26px;
     font-family: 'Libre Caslon Text', serif;
-    color: #4a2c2a;
-    margin-top: 20px;     
-    margin-bottom: 400px;   
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
 }
+
+.favorite-grid {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 40px; /* отступ от текста и кнопки */
+}
+
+.favorite-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 285px;
+    height: 385px;
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
+    border-radius: 180px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
+
+    .favorite-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    }
+
+/* Кружок для выбора */
+.checkbox-icon {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #6A0203;
+    border-radius: 4px;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    cursor: pointer;
+    background: #ECDED6;
+    transition: background 0.2s ease;
+}
+
+.checkbox-icon.checked {
+    background: #6A0203;
+    box-shadow: inset 0 0 0 3px #fff;
+}
+
+
+/* Картинка */
+.favorite-image {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    top: 10px;
+    left: 5px; 
+}
+
+/* Бренд и объем */
+.brand-volume {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #8C6A5E;
+    margin-bottom: -19px;
+}
+
+/* Название */
+.favorite-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #8C6A5E;
+    margin-bottom: -29px;
+}
+
+/* Цена */
+.favorite-price {
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #731718;
+    margin-bottom: 1px;
+}
+
+/* Кнопка удаления */
+.remove-btn {
+    background: #FFFAF8;
+    color: #731718;
+    border: 2px solid #6A0203;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    transition: background 0.3s ease;
+}
+
+    .remove-btn:hover {
+        background: #ECDED6;
+    }
 
 .favorite-description {
-    font-size: 16px;
-    color: #5a2f2d;
-    max-width: 600px;
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 5px; 
+    text-align: center;
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
 }
 
-.favorite-button {
-    padding: 5px 40px;
-    background-color: #FFFAF8;
-    color: #6A0203;
-    border: none;
-    border-radius: 28px;
+.favorite-button-list {
     font-family: 'Poppins', sans-serif;
-    font-size: 15px;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 30px;
+    background: #FFFAF8;
+    color: #6A0203;
+    border: 2px solid #6A0203;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 500;
     cursor: pointer;
-    border: 1.5px solid #6A0203;
-    transition: background-color 0.3s;
+    transition: background 0.3s ease;
 }
 
     .favorite-button:hover {
-        background-color: #ECDED6;
+        background: #333;
     }
+
+

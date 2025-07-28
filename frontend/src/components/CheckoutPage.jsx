@@ -34,11 +34,11 @@ const CheckoutPage = () => {
                         </div>
 
                         <div className="summary-totals">
-                            <div><span>Subtotal</span><span>$760</span></div>
+                            <div><span>Subtotal</span><span>$0</span></div>
                             <div><span>Shipping</span><span>$0</span></div>
                             <div><span>Taxes</span><span>$0</span></div>
                             <div><span>Discount</span><span>$0</span></div>
-                            <div className="summary-total"><span>Total</span><span>$760</span></div>
+                            <div className="summary-total"><span>Total</span><span>$0</span></div>
                         </div>
                     </div>
                 </div>

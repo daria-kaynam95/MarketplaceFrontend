@@ -1,5 +1,5 @@
 ﻿//глав. страницы + каталога для женщин + каталог для мужчин + вход в акк + профиль пользователя 
-import React from "react";
+/*import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -23,6 +23,7 @@ import SignInForm from "./components/SignInForm";
 import UserProfile from "./components/UserProfile";
 import FavoriteFragrances from "./components/FavoriteFragrances";
 import PerfumeDetail from "./components/PerfumeDetail";
+import CompareFragrances from './components/CompareFragrances';
 
 import "./styles/main.css";
 
@@ -61,6 +62,7 @@ function App() {
                 <Route path="/signin" element={<SignInForm />} />
                 <Route path="/user-profile" element={<UserProfile />} />
                 <Route path="/favorites" element={<FavoriteFragrances />} />
+                <Route path="/compare" element={<CompareFragrances />} />
             </Routes>
 
             <Footer />
@@ -68,7 +70,7 @@ function App() {
     );
 }
 
-export default App;
+export default App;*/
 
 //=========================================================================
 
@@ -121,7 +123,7 @@ export default App;*/
 //=========================================================================
 
 // корзина - оформление заказа
-/*import React from "react";
+import React from "react";
 import Header from "./components/Header";
 import CheckoutPage from "./components/CheckoutPage";
 import Footer from "./components/Footer";
@@ -136,5 +138,4 @@ function App() {
     );
 }
 
-export default App;*/
-
+export default App;

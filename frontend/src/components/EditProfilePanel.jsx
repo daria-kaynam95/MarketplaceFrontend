@@ -79,8 +79,13 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
         const formData = new FormData();
         formData.append("image", avatarFile);
 
+        const token = localStorage.getItem("accessToken");
+
         const response = await fetch("https://marketplaceapi20250628113538.azurewebsites.net/api/images/AddImage", {
             method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
             body: formData,
         });
 
@@ -90,6 +95,7 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
 
         return null;
     };
+
 
     const handleSave = async () => {
         let updatedAvatar = {};

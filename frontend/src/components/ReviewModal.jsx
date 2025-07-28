@@ -32,7 +32,7 @@ const ReviewModal = ({ onClose, perfumeId, existingReview }) => {
         const body = {
             perfumeId: Number(perfumeId),
             rating: Number(rating),
-            Text: text,
+            text: text,
         };
 
         if (userId) {

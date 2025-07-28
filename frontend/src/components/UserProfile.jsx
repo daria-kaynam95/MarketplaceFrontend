@@ -4,6 +4,7 @@ import OrderHistory from './OrderHistory';
 import EditProfilePanel from './EditProfilePanel';
 import FavoriteFragrances from './FavoriteFragrances';
 import CompareFragrances from './CompareFragrances';
+import CompanyRegistration from './CompanyRegistration';
 import "./UserProfile.css";
 
 function UserProfile() {
@@ -123,6 +124,15 @@ function UserProfile() {
                         COMPARE FRAGRANCES
                     </li>
 
+                    <li className={selectedTab === "company" ? "active" : ""} onClick={() => setSelectedTab("company")}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 3H21V21H3V3Z" stroke="#603A31" strokeWidth="1.5" />
+                            <path d="M3 9H21" stroke="#603A31" strokeWidth="1.5" />
+                            <path d="M9 21V9" stroke="#603A31" strokeWidth="1.5" />
+                        </svg>
+                        COMPANY REGISTRATION
+                    </li>
+
                     <li onClick={handleLogout}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                             <path d="M16 17L21 12L16 7V10H9V14H16V17ZM4 4H12V6H4V18H12V20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" fill="#603A31" />
@@ -156,6 +166,7 @@ function UserProfile() {
                 {selectedTab === "orders" && <OrderHistory userId={userId} />}
                 {selectedTab === "favorites" && <FavoriteFragrances userId={userId} />}
                 {selectedTab === "compare" && <CompareFragrances userId={userId} />}
+                {selectedTab === "company" && <CompanyRegistration />}
             </main>
         </div>
     );

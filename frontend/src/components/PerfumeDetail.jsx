@@ -3,12 +3,16 @@ import { useParams } from 'react-router-dom';
 import perfumes from '../data/perfumeAllData';
 import ReviewModal from '../components/ReviewModal';
 import ScentIntelChart from '../components/ScentIntelChart';
+import ReviewCard from '../components/ReviewCard';
+import ReviewSummaryPanel from '../components/ReviewSummaryPanel';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { useFavorites } from '../context/FavoriteContext';
 import './PerfumeDetail.css';
 
 const PerfumeDetail = () => {
     const { id } = useParams();
     const perfume = perfumes.find(p => String(p.id) === String(id));
+    const { addToFavorites } = useFavorites();
 
     const [showReviewModal, setShowReviewModal] = useState(false);
     const [reviews, setReviews] = useState([]);
@@ -45,20 +49,33 @@ const PerfumeDetail = () => {
 
     const isEvenImage = perfume.compositionImage.includes('compo2');
 
+    const averageRating = reviews.length
+        ? reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length
+        : 0;
+
+    const ratingBreakdown = {
+        5: reviews.filter(r => r.rating === 5).length,
+        4: reviews.filter(r => r.rating === 4).length,
+        3: reviews.filter(r => r.rating === 3).length,
+        2: reviews.filter(r => r.rating === 2).length,
+        1: reviews.filter(r => r.rating === 1).length,
+    };
+
     return (
         <div className="perfume-detail-wrapper">
+            {/* Левый блок */}
             <div className="perfume-detail-left">
-                <button className="favorite-button">
+                <button className="favorite-button" onClick={() => addToFavorites(perfume)}>
                     <AiOutlineHeart size={20} style={{ marginRight: '6px' }} />
                     Add to Favorite
                 </button>
-                <img
-                    src={perfume.image}
-                    alt={perfume.name}
-                    className="perfume-detail-image"
-                />
+
+                <div className="perfume-image-wrapper">
+                    <img src={perfume.image} alt={perfume.name} className="perfume-detail-image" />
+                </div>
             </div>
 
+            {/* Карточка */}
             <div className="perfume-detail-card">
                 <div className="perfume-detail-info">
                     <p className="perfume-detail-brand">{perfume.brand}</p>
@@ -68,10 +85,7 @@ const PerfumeDetail = () => {
                         {perfume.volume} ▼
                     </div>
 
-                    <p className="perfume-detail-description">
-                        {perfume.description}
-                    </p>
-
+                    <p className="perfume-detail-description">{perfume.description}</p>
                     <p className="perfume-detail-price">${perfume.price} USD</p>
 
                     <div className="perfume-detail-actions">
@@ -80,21 +94,12 @@ const PerfumeDetail = () => {
                             <span>{quantity}</span>
                             <button onClick={increaseQuantity}>+</button>
                         </div>
-
-                        <button className="perfume-detail-add-to-cart">
-                            Add to cart
-                        </button>
-
-                        <button
-                            className="perfume-detail-review-btn"
-                            onClick={() => setShowReviewModal(true)}
-                        >
-                            {userReview ? 'Edit Your Review' : 'Add Your Review'}
-                        </button>
+                        <button className="perfume-detail-add-to-cart">Add to cart</button>
                     </div>
                 </div>
             </div>
 
+            {/* Intel & Composition */}
             {perfume.scentIntel && perfume.compositionImage && (
                 <div className="perfume-intel-composition">
                     <div className="intel-block">
@@ -113,8 +118,6 @@ const PerfumeDetail = () => {
                                 alt="Composition"
                                 className="composition-image"
                             />
-
-                            {/* Условные линии */}
                             {isEvenImage ? (
                                 <>
                                     <div className="line line-ambrette"></div>
@@ -127,8 +130,6 @@ const PerfumeDetail = () => {
                                     <div className="line line-neroli"></div>
                                 </>
                             )}
-
-                            {/* Условные подписи */}
                             <div className="composition-labels">
                                 {isEvenImage ? (
                                     <>
@@ -156,18 +157,42 @@ const PerfumeDetail = () => {
                 />
             )}
 
-            <div className="perfume-detail-reviews">
-                <h3>Reviews</h3>
-                {reviews.length === 0 ? (
-                    <p>No reviews yet</p>
-                ) : (
-                    reviews.map((r) => (
-                        <div key={r.id} className="review-card">
-                            <strong>Rating:</strong> {r.rating} ★<br />
-                            <strong>Review:</strong> {r.reviewText}
-                        </div>
-                    ))
-                )}
+            {/* Блок отзывов */}
+            <div className="review-section">
+                <h3 className="reviews-title">Reviews</h3>
+
+                <div className="perfume-review-section">
+                    <ReviewSummaryPanel
+                        averageRating={averageRating}
+                        totalReviews={reviews.length}
+                        ratingBreakdown={ratingBreakdown}
+                        onAddReviewClick={() => setShowReviewModal(true)}
+                        hasUserReview={!!userReview}
+                    />
+
+                    <div className="perfume-detail-reviews">
+                        {userReview && (
+                            <ReviewCard
+                                userName="You"
+                                rating={userReview.rating}
+                                text={userReview.text}
+                                isConfirmed={true}
+                            />
+                        )}
+
+                        {reviews
+                            .filter(r => String(r.userId) !== String(userId))
+                            .map(r => (
+                                <ReviewCard
+                                    key={r.id}
+                                    userName={r.userName}
+                                    rating={r.rating}
+                                    reviewText={r.reviewText}
+                                    isConfirmed={r.isConfirmed}
+                                />
+                            ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
