@@ -27,7 +27,7 @@ import PerfumeDetail from "./components/PerfumeDetail";
 
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutPage from "./components/CheckoutPage";
-import CompanyProfile from "./components/CompanyProfile"; // добавил импорт
+import CompanyProfile from "./components/CompanyProfile"; 
 
 import "./styles/main.css";
 
@@ -109,7 +109,7 @@ export default App;*/
 
 //=========================================================================
 
-//панель входа в акк + профиль пользователя 
+//панель входа в акк + профиль пользователя
 
 /*import React from "react";
 import { Routes, Route } from "react-router-dom";
@@ -147,6 +147,24 @@ function App() {
         <div className="App">
             <Header />
             <CheckoutPage />
+            <Footer />
+        </div>
+    );
+}
+
+export default App;*/
+
+//профиль компании | ! доделать страницу и связи с айпишкой + добавление товара от лица компании
+/*import React from "react";
+import Header from "./components/Header";
+import CompanyProfile from "./components/CompanyProfile";
+import Footer from "./components/Footer";
+
+function App() {
+    return (
+        <div className="App">
+            <Header />
+            <CompanyProfile />
             <Footer />
         </div>
     );

@@ -31,7 +31,7 @@ function Header() {
         if (isAuthenticated) {
             navigate("/user-profile");
         } else {
-            navigate("/register"); // 👉 теперь идём на регистрацию
+            navigate("/register"); 
         }
     };
 

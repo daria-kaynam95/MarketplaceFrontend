@@ -1,5 +1,4 @@
-﻿/* eslint-disable */
-import React from "react";
+﻿import React from "react";
 import "./LimitedTimeOffer.css";
 import backgroundImage from "../assets/limited-offer.jpg";
 
