@@ -29,16 +29,16 @@
     height: 369px;
     background-color: #fef9f4;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin-top: -65px;
 }
 
 .perfume-detail-image {
-    max-width: 110%;
-    max-height: 110%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 0px;
     margin-bottom: 10px;
@@ -48,7 +48,7 @@
     background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%);
     padding: 30px;
     height: 350px;
-    width: 850px;
+    width: 800px;
     border-radius: 30px;
     display: flex;
     margin-left: 100px;
@@ -105,7 +105,7 @@
     align-items: center;
     background-color: #f1e7d2;
     border-radius: 20px;
-    padding: 5px 15px;
+    padding: 5.5px 15px;
     font-weight: 600;
     font-size: 1rem;
     color: #8C6A5E;
@@ -128,11 +128,11 @@
 
 .perfume-detail-add-to-cart {
     font-family: 'Poppins', sans-serif;
-    padding: 12px 24px;
-    background-color: #e8ddc6;
-    color: #5c4033;
+    padding: 10px 45px;
+    background-color: #E8D9BA;
+    color: #731718;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 900;
     border: none;
     border-radius: 40px;
     cursor: pointer;
@@ -161,10 +161,12 @@
     }
 
 .favorite-button {
-    margin-left: -145px;
+    font-family: 'Poppins', sans-serif;
+    margin-left: -165px;
     display: flex;
     align-items: center;
-    background-color: transparent;
+    background-color: #FFFAF8;
+    color: #603A31;
     border: none;
     outline: none;
     border-radius: 8px;
@@ -174,6 +176,13 @@
     margin-bottom: 16px;
     transition: background-color 0.3s;
 }
+
+    .favorite-button:hover {
+        background-color: inherit;
+        color: inherit;
+        box-shadow: none;
+        filter: none;
+    }
 
 .reviews-title {
     font-size: 2rem;
@@ -206,52 +215,6 @@
     font-family: 'Poppins', sans-serif;
     flex: 1;
 }
-
-/* Левая часть — сводка рейтингов */
-/*.review-summary-panel {
-    background: #f6ebe7;
-    padding: 24px;
-    border-radius: 16px;
-    width: 280px;
-    flex-shrink: 0;
-}*
-
-    .review-summary-panel h2 {
-        font-size: 2.5rem;
-        margin: 0;
-        color: #5a1f1f;
-    }
-
-    .review-summary-panel .stars {
-        font-size: 1.2rem;
-        color: #5a1f1f;
-        margin: 4px 0 10px;
-    }
-
-    .review-summary-panel p {
-        margin-bottom: 16px;
-        color: #5a1f1f;
-        font-size: 0.95rem;
-    }
-
-    .review-summary-panel button {
-        font-family: 'Poppins', sans-serif;
-        width: 100%;
-        padding: 10px 20px;
-        margin-bottom: 20px;
-        font-size: 1rem;
-        font-weight: 600;
-        color: #731718;
-        background-color: #fff4ed;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-        .review-summary-panel button:hover {
-            background-color: #edd6c7;
-        }*/
 
 .rating-breakdown {
     display: flex;

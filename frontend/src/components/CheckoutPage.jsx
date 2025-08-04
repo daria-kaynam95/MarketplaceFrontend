@@ -1,7 +1,20 @@
 ﻿import React from "react";
 import "./CheckoutPage.css";
+import { useCart } from "../context/CartContext";
 
 const CheckoutPage = () => {
+    const { cartItems, addToCart, removeFromCart } = useCart();
+
+    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const shipping = 5;
+    const taxes = subtotal * 0.1;
+    const discount = 0;
+    const total = subtotal + shipping + taxes - discount;
+
+    const handleReturn = () => {
+        window.location.href = "/cart";
+    };
+
     return (
         <div className="checkout-container">
             <h2 className="checkout-title">Placing An Order</h2>
@@ -9,21 +22,54 @@ const CheckoutPage = () => {
             <div className="checkout-grid">
                 {/* LEFT: Order Summary */}
                 <div className="order-summary">
-                    <button className="return-button">← Return To Shopping Cart</button>
+                    <button className="return-button" onClick={handleReturn}>
+                        ← Return To Shopping Cart
+                    </button>
 
                     <h3 className="section-title">Order Summary</h3>
 
-                    <div className="product-list">
-                        {[1, 2].map((item, index) => (
-                            <div key={index} className="product-item">
-                                <div className="quantity-control">
-                                    <button>−</button>
-                                    <span>1</span>
-                                    <button>+</button>
+                    <div className="checkout-product-list">
+                        {cartItems.length === 0 ? (
+                            <p>No items in your cart.</p>
+                        ) : (
+                            cartItems.map((item) => (
+                                <div className="checkout-cart-item" key={item.id}>
+                                    <div className="checkout-cart-image-wrapper">
+                                        <img src={item.image} alt={item.name} className="checkout-cart-image" />
+                                    </div>
+
+                                    <div className="checkout-cart-info">
+                                        <p className="checkout-cart-brand">{item.brand}</p>
+                                        <p className="checkout-cart-name">{item.name}</p>
+                                        <p className="checkout-cart-volume">{item.volume}</p>
+
+                                        <div className="checkout-cart-bottom">
+                                            <p className="checkout-cart-price">${item.price}</p>
+
+                                            <div className="checkout-cart-controls">
+                                                <div className="checkout-cart-quantity">
+                                                    <button onClick={() => addToCart(item, -1)} disabled={item.quantity <= 1}>−</button>
+                                                    <span>{item.quantity}</span>
+                                                    <button onClick={() => addToCart(item, 1)}>+</button>
+                                                </div>
+
+                                                <button className="checkout-remove-item" onClick={() => removeFromCart(item.id)}>
+                                                    <svg width="20" height="22" viewBox="0 0 20 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path
+                                                            d="M18 8L16.005 19.346C15.9236 19.8094 15.6815 20.2292 15.3212 20.5317C14.9609 20.8342 14.5055 21 14.035 21H5.965C5.49454 21 5.03913 20.8342 4.67882 20.5317C4.31852 20.2292 4.07639 19.8094 3.995 19.346L2 8M19 5H13.375M13.375 5V3C13.375 2.46957 13.1643 1.96086 12.7892 1.58579C12.4141 1.21071 11.9054 1 11.375 1H8.625C8.09457 1 7.58586 1.21071 7.21079 1.58579C6.83571 1.96086 6.625 2.46957 6.625 3V5M13.375 5H6.625M1 5H6.625"
+                                                            stroke="#731718"
+                                                            strokeWidth="1.5"
+                                                            strokeLinecap="round"
+                                                            strokeLinejoin="round"
+                                                        />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button className="delete-button">🗑️</button>
-                            </div>
-                        ))}
+                            ))
+                        )}
                     </div>
 
                     <div className="discount-section">
@@ -34,11 +80,26 @@ const CheckoutPage = () => {
                         </div>
 
                         <div className="summary-totals">
-                            <div><span>Subtotal</span><span>$0</span></div>
-                            <div><span>Shipping</span><span>$0</span></div>
-                            <div><span>Taxes</span><span>$0</span></div>
-                            <div><span>Discount</span><span>$0</span></div>
-                            <div className="summary-total"><span>Total</span><span>$0</span></div>
+                            <div>
+                                <span>Subtotal</span>
+                                <span>${subtotal.toFixed(2)}</span>
+                            </div>
+                            <div>
+                                <span>Shipping</span>
+                                <span>${shipping.toFixed(2)}</span>
+                            </div>
+                            <div>
+                                <span>Taxes</span>
+                                <span>${taxes.toFixed(2)}</span>
+                            </div>
+                            <div>
+                                <span>Discount</span>
+                                <span>${discount.toFixed(2)}</span>
+                            </div>
+                            <div className="summary-total">
+                                <span>Total</span>
+                                <span>${total.toFixed(2)}</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -97,9 +158,15 @@ const CheckoutPage = () => {
                     <div className="payment-section">
                         <label>Payment Method</label>
                         <div className="payment-options">
-                            <label><input type="radio" name="payment" /> Paypal</label>
-                            <label><input type="radio" name="payment" /> Credit Or Debit Card</label>
-                            <label><input type="radio" name="payment" /> COD</label>
+                            <label>
+                                <input type="radio" name="payment" /> Paypal
+                            </label>
+                            <label>
+                                <input type="radio" name="payment" /> Credit Or Debit Card
+                            </label>
+                            <label>
+                                <input type="radio" name="payment" /> COD
+                            </label>
                         </div>
 
                         <div className="form-grid">
@@ -118,14 +185,14 @@ const CheckoutPage = () => {
                         </div>
                     </div>
 
-                    <div class="save-options">
-                        <label class="custom-checkbox">
+                    <div className="save-options">
+                        <label className="custom-checkbox">
                             <input type="checkbox" />
-                            Save my address for future purchases.
+                            <span>Save my address for future purchases.</span>
                         </label>
-                        <label class="custom-checkbox">
+                        <label className="custom-checkbox">
                             <input type="checkbox" />
-                            Save my payment method for future purchases.
+                            <span>Save my payment method for future purchases.</span>
                         </label>
                     </div>
 

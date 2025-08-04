@@ -1,18 +1,23 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+
 import perfumes from '../data/perfumeAllData';
 import ReviewModal from '../components/ReviewModal';
 import ScentIntelChart from '../components/ScentIntelChart';
 import ReviewCard from '../components/ReviewCard';
 import ReviewSummaryPanel from '../components/ReviewSummaryPanel';
 import { AiOutlineHeart } from 'react-icons/ai';
+
 import { useFavorites } from '../context/FavoriteContext';
+import { CartContext } from '../context/CartContext';
+
 import './PerfumeDetail.css';
 
 const PerfumeDetail = () => {
     const { id } = useParams();
     const perfume = perfumes.find(p => String(p.id) === String(id));
     const { addToFavorites } = useFavorites();
+    const { addToCart } = useContext(CartContext);
 
     const [showReviewModal, setShowReviewModal] = useState(false);
     const [reviews, setReviews] = useState([]);
@@ -63,11 +68,10 @@ const PerfumeDetail = () => {
 
     return (
         <div className="perfume-detail-wrapper">
-            {/* Левый блок */}
             <div className="perfume-detail-left">
                 <button className="favorite-button" onClick={() => addToFavorites(perfume)}>
-                    <AiOutlineHeart size={20} style={{ marginRight: '6px' }} />
                     Add to Favorite
+                    <AiOutlineHeart size={20} style={{ marginLeft: '6px' }} />
                 </button>
 
                 <div className="perfume-image-wrapper">
@@ -75,16 +79,11 @@ const PerfumeDetail = () => {
                 </div>
             </div>
 
-            {/* Карточка */}
             <div className="perfume-detail-card">
                 <div className="perfume-detail-info">
                     <p className="perfume-detail-brand">{perfume.brand}</p>
                     <h2 className="perfume-detail-name">{perfume.name}</h2>
-
-                    <div className="perfume-detail-volume-dropdown">
-                        {perfume.volume} ▼
-                    </div>
-
+                    <div className="perfume-detail-volume-dropdown">{perfume.volume} ▼</div>
                     <p className="perfume-detail-description">{perfume.description}</p>
                     <p className="perfume-detail-price">${perfume.price} USD</p>
 
@@ -94,12 +93,17 @@ const PerfumeDetail = () => {
                             <span>{quantity}</span>
                             <button onClick={increaseQuantity}>+</button>
                         </div>
-                        <button className="perfume-detail-add-to-cart">Add to cart</button>
+
+                        <button
+                            className="perfume-detail-add-to-cart"
+                            onClick={() => addToCart({ ...perfume, quantity })}
+                        >
+                            Add to cart
+                        </button>
                     </div>
                 </div>
             </div>
 
-            {/* Intel & Composition */}
             {perfume.scentIntel && perfume.compositionImage && (
                 <div className="perfume-intel-composition">
                     <div className="intel-block">
@@ -157,7 +161,6 @@ const PerfumeDetail = () => {
                 />
             )}
 
-            {/* Блок отзывов */}
             <div className="review-section">
                 <h3 className="reviews-title">Reviews</h3>
 

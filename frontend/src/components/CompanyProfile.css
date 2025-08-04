@@ -1,0 +1,56 @@
+﻿.company-profile-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 30px);
+    background-color: #FFFAF8;
+}
+
+.company-profile-sidebar {
+    width: 260px;
+    padding: 30px 20px;
+    border-right: 1px solid #ddd;
+}
+
+.company-profile-menu li {
+    list-style: none;
+    padding: 12px 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #603A31;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+}
+
+    .company-profile-menu li:hover {
+        background-color: rgba(96, 58, 49, 0.1);
+        border-radius: 8px;
+    }
+
+    .company-profile-menu li.active {
+        background-color: #603A31;
+        color: #fff;
+        border-radius: 8px;
+    }
+
+.logout-button {
+    margin-top: 20px;
+    padding: 10px 18px;
+    background: #ECDED6;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    color: #6A0203;
+    transition: background 0.25s ease;
+}
+
+    .logout-button:hover {
+        background: #8e2d2d;
+        color: #fff;
+    }
+
+.company-profile-content {
+    flex: 1;
+    padding: 30px;
+}

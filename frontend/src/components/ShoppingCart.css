@@ -1,0 +1,239 @@
+﻿.shopping-cart-container {
+    width: 90%;
+    margin: 50px auto;
+    font-family: 'Arial', sans-serif;
+    color: #333;
+}
+
+.continue-shopping {
+    color: #731718;
+    font-size: 14px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+    .continue-shopping:hover {
+        color: #a12324;
+    }
+
+.cart-title {
+    font-family: 'Libre Caslon Text', serif;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.cart-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.cart-left {
+    flex: 2;
+}
+
+.empty-cart-message {
+    font-size: 18px;
+    color: #555;
+}
+
+.cart-item {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    align-items: center;
+}
+
+.cart-item {
+    animation: fadeSlideIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cart-item-card {
+    width: 230px;
+    height: 300px;
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%) !important;
+    border-radius: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+    .cart-item-card img.cart-image {
+        max-width: 80%;
+        max-height: 80%;
+        object-fit: contain;
+        border-radius: 12px;
+    }
+
+.item-image-container {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+}
+
+.cart-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-info {
+    flex: 1;
+}
+
+.cart-brand {
+    font-size: 16px;
+    font-weight: 500;
+    color: #603A31;
+}
+
+.cart-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 5px 0;
+    color: #603A31;
+}
+
+.cart-volume {
+    font-size: 14px;
+    color: #603A31;
+    margin-bottom: 10px;
+}
+
+/* Новый блок: вертикально цена, под ней количество и мусорка */
+.cart-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+/* Блок: количество и иконка мусорки */
+.cart-controls {
+    display: flex;
+    align-items: center;
+    gap: 390px;
+}
+
+.cart-price {
+    color: #731718;
+    font-size: 33px;
+    font-weight: 600;
+}
+
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #6a1b1a;
+    border-radius: 999px;
+    padding: 5px 15px;
+    width: 140px;
+    height: 45px;
+    background-color: #fef8f6;
+    font-family: 'Poppins', sans-serif;
+}
+
+    .cart-quantity button {
+        background: none;
+        border: none;
+        color: #6a1b1a;
+        font-size: 24px;
+        font-weight: 500;
+        cursor: pointer;
+        width: 30px;
+        height: 30px;
+        line-height: 1;
+    }
+
+        .cart-quantity button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+    .cart-quantity span {
+        font-size: 22px;
+        font-weight: 500;
+        color: #6a1b1a;
+    }
+
+.remove-item {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+    .remove-item:hover {
+        transform: scale(1.2);
+    }
+
+.cart-right {
+    font-family: 'Poppins', sans-serif;
+    flex: 1;
+    border: 0px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.summary p {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.summary hr {
+    margin: 15px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+.summary .total {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.cart-checkout-button {
+    font-family: 'Poppins', sans-serif;
+    width: 69%;
+    padding: 5px 3px;
+    background-color: #FFFAF8;
+    color: #6A0203;
+    border: 2px solid #6A0203;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 200px;
+    margin-top: 20px;
+    margin-left: 65px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+    .cart-checkout-button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+    }

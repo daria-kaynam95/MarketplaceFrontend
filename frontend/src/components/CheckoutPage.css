@@ -1,4 +1,5 @@
-﻿.checkout-container {
+﻿/* ---------- ОБЩЕЕ ОФОРМЛЕНИЕ СТРАНИЦЫ ---------- */
+.checkout-container {
     padding: 40px;
     background-color: #fff8f5;
     font-family: 'Poppins', sans-serif;
@@ -14,10 +15,11 @@
 
 .checkout-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1.8fr;
+    grid-template-columns: 3fr 4fr; /* уменьшили левую, увеличили правую */
     gap: 40px;
 }
 
+/* ---------- ЛЕВАЯ ЧАСТЬ: ORDER SUMMARY ---------- */
 .order-summary {
     background-color: #fff8f7;
     padding: 5px;
@@ -35,6 +37,7 @@
     cursor: pointer;
     text-align: left;
     margin-bottom: 10px;
+    text-decoration: underline;
 }
 
 .section-title {
@@ -43,43 +46,145 @@
     margin-bottom: 16px;
 }
 
-.product-list {
+/* ---------- НОВЫЙ СПИСОК ПРОДУКТОВ: checkout-cart-item ---------- */
+.checkout-product-list {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 25px;
 }
 
-.product-item {
+.checkout-cart-item {
+    font-family: 'Poppins', sans-serif;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #fff;
-    padding: 15px 20px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
-
-.quantity-control {
-    display: flex;
-    align-items: center;
     gap: 10px;
+    border-bottom: 1px solid #ddd;
+    padding: 20px 0;
+    align-items: center;
+    animation: fadeSlideIn 0.5s ease forwards;
+    opacity: 0;
 }
 
-    .quantity-control button {
-        background-color: #f1f1f1;
+.checkout-cart-image-wrapper {
+    width: 160px; 
+    height: 220px; 
+    background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 50%, #FFFAF8 100%);
+    border-radius: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+}
+
+.checkout-cart-image {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+.checkout-cart-info {
+    flex: 1;
+}
+
+.checkout-cart-brand {
+    font-size: 14px;
+    font-weight: 500;
+    color: #603A31;
+}
+
+.checkout-cart-name {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 0;
+    color: #603A31;
+}
+
+.checkout-cart-volume {
+    font-size: 13px;
+    color: #603A31;
+    margin-bottom: 8px;
+}
+
+.checkout-cart-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.checkout-cart-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.checkout-cart-price {
+    color: #731718;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+.checkout-cart-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid #6a1b1a;
+    border-radius: 999px;
+    padding: 4px 14px;
+    width: 110px;
+    height: 38px;
+    background-color: #fef8f6;
+}
+
+    .checkout-cart-quantity button {
+        background: none;
         border: none;
-        padding: 10px 12px;
-        border-radius: 8px;
+        color: #6a1b1a;
+        font-size: 20px;
+        font-weight: 500;
         cursor: pointer;
+        width: 26px;
+        height: 26px;
     }
 
-.delete-button {
+        .checkout-cart-quantity button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+    .checkout-cart-quantity span {
+        font-size: 18px;
+        font-weight: 500;
+        color: #6a1b1a;
+    }
+
+.checkout-remove-item {
     background: none;
     border: none;
-    font-size: 18px;
     cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
 }
 
+    .checkout-remove-item:hover {
+        transform: scale(1.2);
+    }
+
+@keyframes fadeSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- СКИДКА И СУММА ---------- */
 .discount-section label {
     font-weight: 500;
     margin-bottom: 8px;
@@ -96,16 +201,19 @@
         flex: 1;
         padding: 15px;
         border-radius: 60px;
-        border: 1px solid #ddd;
+        border: 1px solid #731718;
+        background-color: #FFFAF8;
     }
 
     .discount-input-group button {
-        padding: 5px 45px;
-        background-color: #b65a5a;
-        color: white;
-        border: none;
+        padding: 5px 35px;
+        background-color: #FFFAF8;
+        color: #731718;
+        border: 1px solid #731718;
+        font-weight: 700;
         border-radius: 60px;
         cursor: pointer;
+        font-family: 'Poppins', sans-serif;
     }
 
 .summary-totals {
@@ -127,14 +235,15 @@
     margin-top: 10px;
 }
 
+/* ---------- ПРАВАЯ ЧАСТЬ: CHECKOUT FORM ---------- */
 .checkout-form {
     background-color: #FFFAF8;
-    padding: 24px;
+    padding: 30px;
     border-radius: 16px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    max-width: 710px;
+    max-width: 900px; /* расширили */
     margin-left: auto;
 }
 
@@ -148,13 +257,14 @@
 
     .checkout-form input {
         display: block;
-        padding: 5.5px 5.5px;
-        border: 1px solid #ccc;
+        padding: 10px 10px;
+        border: 1px solid #731718;
         border-radius: 20px;
         width: 100%;
         box-sizing: border-box;
         font-size: 14px;
         margin-bottom: 16px;
+        background-color: #FFFAF8;
     }
 
 .form-grid {
@@ -174,7 +284,7 @@
 .payment-section .form-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    gap: 20px;
 }
 
     .payment-section .form-grid > div {
@@ -184,7 +294,7 @@
 
 .payment-options {
     display: flex;
-    gap: 20px;
+    gap: 40px; /* увеличен отступ между кнопками */
     flex-wrap: wrap;
     margin: 10px 0;
 }
@@ -192,8 +302,48 @@
     .payment-options label {
         display: flex;
         align-items: center;
-        gap: 6px;
+        justify-content: flex-start;
+        gap: 1px;
+        padding: 4.5px 20px;
+        border: 1.5px solid #7a2e2e;
+        border-radius: 50px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #6a3d3d;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        min-width: 190px;
+        text-align: center;
     }
+
+    .payment-options input[type="radio"] {
+        width: 12px;
+        height: 12px;
+        accent-color: #731718;
+        position: relative; 
+        top: 6px;
+    }
+
+        .payment-options input[type="radio"] + span::before {
+            content: "";
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            border: 2px solid #7a2e2e;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .payment-options input[type="radio"]:checked + span::before {
+            background: radial-gradient(#7a2e2e 50%, transparent 51%);
+        }
+
+    /* изменение цвета при наведении */
+    .payment-options label:hover {
+        border-color: #5c2020;
+    }
+
 
 .full-width {
     flex: 1 1 100%;
@@ -202,37 +352,44 @@
 .save-options {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    margin-top: 20px;
+    gap: 1px;
+    margin-top: -5px;
 }
 
 .custom-checkbox {
     display: flex;
     align-items: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    font-size: 20px;
     color: #5b3020;
+    gap: 6px;
+    cursor: pointer;
+    line-height: 1.2;
+    margin-bottom: 0; 
 }
 
     .custom-checkbox input[type="checkbox"] {
         appearance: none;
+        display: inline-block;
         width: 18px;
         height: 18px;
         border: 2px solid #7b2e2e;
-        border-radius: 4px;
+        border-radius: 5px;
         margin-right: 10px;
-        cursor: pointer;
+        padding: 0;
         position: relative;
         background-color: transparent;
+        flex-shrink: 0;
+        top: 19.5px;
     }
 
         .custom-checkbox input[type="checkbox"]:checked::before {
             content: "";
             position: absolute;
             top: 2px;
-            left: 6px;
+            left: 5px;
             width: 4px;
-            height: 10px;
+            height: 9px;
             border: solid #7b2e2e;
             border-width: 0 2px 2px 0;
             transform: rotate(45deg);
@@ -246,6 +403,6 @@
     border-radius: 24px;
     font-size: 16px;
     cursor: pointer;
-    width: 100%;
+    width: 55%;
     margin-top: 10px;
 }
