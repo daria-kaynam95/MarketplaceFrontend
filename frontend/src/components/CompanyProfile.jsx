@@ -1,28 +1,29 @@
 ﻿import React, { useState, useEffect } from "react";
-import { useAuth } from "../context/AuthContext";
+import { useCompanyAuth } from "../context/CompanyAuthContext";
 import "./CompanyProfile.css";
 
 function CompanyProfile() {
-    const { authToken, userId, logout } = useAuth();
+    const { companyToken, companyId, logout: companyLogout } = useCompanyAuth();
+
     const [company, setCompany] = useState(null);
     const [selectedTab, setSelectedTab] = useState("info");
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (userId && authToken) {
-            fetchCompanyProfile(userId);
+        if (companyId && companyToken) {
+            fetchCompanyProfile(companyId, companyToken);
         } else {
             console.error("Company ID или токен отсутствует");
             setLoading(false);
         }
-    }, [userId, authToken]);
+    }, [companyId, companyToken]);
 
-    const fetchCompanyProfile = async (id) => {
+    const fetchCompanyProfile = async (id, token) => {
         try {
             const response = await fetch(
-                `https://marketplaceapi20250628113538.azurewebsites.net/api/companies/profile/id/${id}`,
+                `https://localhost:7225/api/companies/id/${id}`,
                 {
-                    headers: { Authorization: `Bearer ${authToken}` },
+                    headers: { Authorization: `Bearer ${token}` },
                 }
             );
 
@@ -40,12 +41,16 @@ function CompanyProfile() {
     };
 
     const handleLogout = async () => {
-        await logout();
+        await companyLogout();
         window.location.href = "/signin";
     };
 
     if (loading) {
         return <div className="company-profile-wrapper">Загрузка профиля компании...</div>;
+    }
+
+    if (!companyToken || !companyId) {
+        return <div className="company-profile-wrapper">Company ID или токен отсутствует</div>;
     }
 
     return (
@@ -115,9 +120,41 @@ function CompanyProfile() {
             </aside>
 
             <main className="company-profile-content">
-                <div className="placeholder-message">
-                    Здесь будет отображаться выбранная вкладка: <b>{selectedTab}</b>
-                </div>
+                {company ? (
+                    <>
+                        {selectedTab === "info" && (
+                            <div>
+                                <h2>Company Information</h2>
+                                <p><b>Name:</b> {company.name}</p>
+                                <p><b>Email:</b> {company.email}</p>
+                                <p><b>Address:</b> {company.address}</p>
+                            </div>
+                        )}
+
+                        {selectedTab === "products" && (
+                            <div>
+                                <h2>My Products</h2>
+                                <p>Здесь будет список продуктов компании.</p>
+                            </div>
+                        )}
+
+                        {selectedTab === "orders" && (
+                            <div>
+                                <h2>Orders</h2>
+                                <p>Здесь будет список заказов.</p>
+                            </div>
+                        )}
+
+                        {selectedTab === "analytics" && (
+                            <div>
+                                <h2>Analytics</h2>
+                                <p>Здесь будет аналитика компании.</p>
+                            </div>
+                        )}
+                    </>
+                ) : (
+                    <p>Данные компании не найдены.</p>
+                )}
             </main>
         </div>
     );

@@ -22,8 +22,8 @@ const ReviewModal = ({ onClose, perfumeId, existingReview }) => {
         }
 
         const url = existingReview
-            ? `https://marketplaceapi20250628113538.azurewebsites.net/api/reviews/update-review/${existingReview.id}`
-            : 'https://marketplaceapi20250628113538.azurewebsites.net/api/reviews/create-review';
+            ? `https://localhost:7225/api/reviews/update-review/${existingReview.id}`
+            : 'https://localhost:7225/api/reviews/create-review';
 
         const method = existingReview ? 'PUT' : 'POST';
 
@@ -79,7 +79,7 @@ const ReviewModal = ({ onClose, perfumeId, existingReview }) => {
         }
 
         try {
-            const response = await fetch(`https://marketplaceapi20250628113538.azurewebsites.net/api/reviews/delete-review/${existingReview.id}`, {
+            const response = await fetch(`https://localhost:7225/api/reviews/delete-review/${existingReview.id}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,

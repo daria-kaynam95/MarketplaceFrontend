@@ -1,9 +1,8 @@
-﻿import { useState, useContext } from "react";
+﻿import { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate, Link } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
 import "./RegisterForm.css";
 
 function RegisterForm() {
@@ -22,7 +21,6 @@ function RegisterForm() {
     const [taxNumber, setTaxNumber] = useState("");
     const [regNumber, setRegNumber] = useState("");
 
-    const { login } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const handleUserSubmit = async (e) => {
@@ -33,65 +31,39 @@ function RegisterForm() {
         }
 
         try {
-            const response = await axios.post(
-                "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/register",
+            await axios.post(
+                "https://localhost:7225/api/auth/register",
                 { nickname: `${firstName} ${lastName}`, email, password },
                 { headers: { "Content-Type": "application/json" } }
             );
 
-            if (response.status === 200 || response.status === 201) {
-                toast.success("Registration successful! Logging in...");
-                const loginResponse = await axios.post(
-                    "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/login",
-                    { email, password }
-                );
-
-                const { token, id } = loginResponse.data;
-                if (token && id) {
-                    login(token, id);
-                    navigate("/user-profile");
-                } else {
-                    toast.warning("Registration done, but login failed.");
-                }
-            }
+            toast.success("User registered successfully!");
+            navigate("/user-profile"); // ✅ переход на профиль
         } catch (error) {
-            toast.error(error.response?.data?.message || "Registration failed");
+            toast.error(error.response?.data?.message || "User registration failed");
         }
     };
 
     const handleCompanySubmit = async (e) => {
         e.preventDefault();
         try {
-            // 1. Регистрация компании
             await axios.post(
-                "https://marketplaceapi20250628113538.azurewebsites.net/api/companies/create-company",
+                "https://localhost:7225/api/companies/create-company",
                 {
-                    companyName,
+                    name: companyName,
                     description,
                     taxNumber,
-                    registrationNumber: regNumber,
+                    regNumber,
                     email,
                     password
                 },
                 { headers: { "Content-Type": "application/json" } }
             );
 
-            // 2. Автоматический логин
-            const loginResponse = await axios.post(
-                "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/login",
-                { email, password }
-            );
-
-            const { token, id } = loginResponse.data;
-            if (token && id) {
-                login(token, id);
-                toast.success("Company registered & logged in successfully!");
-                navigate("/company-profile");
-            } else {
-                toast.warning("Company created, but login failed.");
-                navigate("/signin");
-            }
+            toast.success("Company registered successfully!");
+            navigate("/company-profile"); 
         } catch (error) {
+            console.log(error.response?.data);
             toast.error(error.response?.data?.message || "Company registration failed");
         }
     };

@@ -1,35 +1,81 @@
-﻿import React, { useState, useContext } from "react";
+﻿import React, { useState } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";             // кастомный хук из AuthContext
+import { useCompanyAuth } from "../context/CompanyAuthContext"; // кастомный хук из CompanyAuthContext
 import "./SignInForm.css";
 
 function SignInForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
-    const { login } = useContext(AuthContext);
+
+    const { login: userLogin } = useAuth();
+    const { login: companyLogin } = useCompanyAuth();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         try {
-            const response = await axios.post(
-                "https://marketplaceapi20250628113538.azurewebsites.net/api/auth/login",
+            // Попытка логина пользователя
+            const userResponse = await axios.post(
+                "https://localhost:7225/api/auth/login",
                 { email, password }
             );
-            const { token, id } = response.data;
+
+            console.log("User login response:", userResponse.data);
+
+            const token = userResponse.data?.token ?? userResponse.data?.jwtToken;
+            const id = userResponse.data?.id ?? userResponse.data?.userId;
+
             if (token && id) {
-                login(token, id);
-                toast.success("Login successful!");
+                userLogin(token, id);
+                toast.success("User login successful!");
                 navigate("/user-profile");
-            } else {
-                toast.error("Login failed: token or user ID missing.");
+                return;
             }
-        } catch (error) {
-            toast.error(error.response?.data?.message || "Login failed. Please try again.");
+
+            toast.error("Login failed: token or user ID missing.");
+        } catch (userError) {
+            console.log("User login error:", userError.response?.data || userError.message);
+
+            if (userError.response?.status === 400 || userError.response?.status === 401) {
+                try {
+                    // Попытка логина компании
+                    const companyResponse = await axios.post(
+                        "https://localhost:7225/api/companies/login",
+                        { email, password }
+                    );
+
+                    console.log("Company login response:", companyResponse.data);
+
+                    const token = companyResponse.data?.token
+                        ?? companyResponse.data?.jwtToken
+                        ?? companyResponse.data?.accessToken
+                        ?? companyResponse.data?.access_token;
+
+                    const id = companyResponse.data?.id
+                        ?? companyResponse.data?.companyId
+                        ?? companyResponse.data?.idCompany;
+
+                    if (token && id) {
+                        companyLogin(token, id, "COMPANY");
+                        toast.success("Company login successful!");
+                        navigate("/company-profile");
+                        return;
+                    }
+
+                    toast.error("Company login failed: token or company ID missing.");
+                } catch (companyError) {
+                    console.log("Company login error:", companyError.response?.data || companyError.message);
+                    toast.error(companyError.response?.data?.message || "Company login failed.");
+                }
+            } else {
+                toast.error(userError.response?.data?.message || "Login failed. Please try again.");
+            }
         }
     };
 

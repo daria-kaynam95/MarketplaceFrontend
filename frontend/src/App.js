@@ -27,14 +27,15 @@ import PerfumeDetail from "./components/PerfumeDetail";
 
 import ShoppingCart from "./components/ShoppingCart";
 import CheckoutPage from "./components/CheckoutPage";
-import CompanyProfile from "./components/CompanyProfile"; 
+import CompanyProfile from "./components/CompanyProfile";
 
 import "./styles/main.css";
 
-import { AuthProvider, AuthContext } from "./context/AuthContext";
+import { AuthProvider, AuthContext, useAuth } from "./context/AuthContext";
+import { CompanyAuthProvider } from "./context/CompanyAuthContext";
 
 function AppRoutes() {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth(); // если нужен user из контекста AuthContext
 
     return (
         <Routes>
@@ -61,10 +62,11 @@ function AppRoutes() {
 
             <Route path="/signin" element={<SignInForm />} />
             <Route path="/register" element={<RegisterForm />} />
-            <Route
-                path="/profile"
-                element={user?.userType === "COMPANY" ? <CompanyProfile /> : <UserProfile />}
-            />
+
+            {/* Профили */}
+            <Route path="/user-profile" element={<UserProfile />} />
+            <Route path="/company-profile" element={<CompanyProfile />} />
+
             <Route path="/favorites" element={<FavoriteFragrances />} />
 
             <Route path="/cart" element={<ShoppingCart />} />
@@ -76,83 +78,20 @@ function AppRoutes() {
 function App() {
     return (
         <AuthProvider>
-            <ScrollToTop />
-            <Header />
-            <AppRoutes />
-            <Footer />
+            <CompanyAuthProvider>
+                <ScrollToTop />
+                <Header />
+                <AppRoutes />
+                <Footer />
+            </CompanyAuthProvider>
         </AuthProvider>
     );
 }
 
 export default App;
 
-//=========================================================================
-
-// панели регистрации акк
-/*import React from "react";
-import Header from "./components/Header";
-import RegisterForm from "./components/RegisterForm";
-import Footer from "./components/Footer";
-import '@fortawesome/fontawesome-free/css/all.min.css';
-
-function App() {
-    return (
-        <>
-            <Header />
-            <RegisterForm />
-            <Footer />
-        </>
-    );
-}
-
-export default App;*/
 
 //=========================================================================
-
-//панель входа в акк + профиль пользователя
-
-/*import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import SignInForm from "./components/SignInForm";
-import UserProfile from "./components/UserProfile";
-
-function App() {
-    return (
-        <div>
-            <Header />
-            <Routes>
-                <Route path="/" element={<SignInForm />} />
-                <Route path="/user-profile" element={<UserProfile />} />
-            </Routes>
-            <Footer />
-        </div>
-    );
-}
-
-export default App;*/
-
-
-//=========================================================================
-
-// корзина - оформление заказа
-/*import React from "react";
-import Header from "./components/Header";
-import CheckoutPage from "./components/CheckoutPage";
-import Footer from "./components/Footer";
-
-function App() {
-    return (
-        <div className="App">
-            <Header />
-            <CheckoutPage />
-            <Footer />
-        </div>
-    );
-}
-
-export default App;*/
 
 //профиль компании | ! доделать страницу и связи с айпишкой + добавление товара от лица компании
 /*import React from "react";

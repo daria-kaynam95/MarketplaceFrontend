@@ -36,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     const logout = async () => {
         if (userId) {
             try {
-                await fetch(`https://marketplaceapi20250628113538.azurewebsites.net/api/auth/logout/${userId}`, {
+                await fetch(`https://localhost:7225/api/auth/logout/${userId}`, {
                     method: "POST",
                     headers: {
                         Authorization: `Bearer ${authToken}`,

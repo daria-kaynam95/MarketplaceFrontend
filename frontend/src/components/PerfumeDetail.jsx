@@ -29,7 +29,7 @@ const PerfumeDetail = () => {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch(`https://marketplaceapi20250628113538.azurewebsites.net/api/reviews?id=${id}`);
+                const response = await fetch(`https://localhost:7225/api/reviews?id=${id}`);
                 const data = await response.json();
                 setReviews(data);
 
