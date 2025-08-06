@@ -1,23 +1,32 @@
 ﻿import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./CompareFragrances.css";
+import scalesImage from "../assets/scales.png";
 
-function CompareFragrances({ perfumeLeft, perfumeRight }) {
+function CompareFragrances() {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const products = location.state?.products || [];
+
+    const perfumeLeft = products[0];
+    const perfumeRight = products[1];
+
+    const handleCompare = () => {
+        navigate("/fragrance-details", {
+            state: { products },
+        });
+    };
+
     return (
         <div className="compare-wrapper">
             <h2 className="compare-title">COMPARE FRAGRANCES</h2>
 
             <div className="compare-container">
                 <div className="compare-icon-wrapper">
-                    {/* фоновая карточка */}
                     <div className="empty-card"></div>
-                    {/* весы */}
-                    <img
-                        src="/assets/icons/scales.png"
-                        alt="Scales"
-                        className="scales-image"
-                    />
 
-                    {/* Левая карточка */}
+                    <img src={scalesImage} alt="Scales" className="scales-image" />
+
                     {perfumeLeft && (
                         <div className="compare-card compare-card-left">
                             <img
@@ -29,7 +38,6 @@ function CompareFragrances({ perfumeLeft, perfumeRight }) {
                         </div>
                     )}
 
-                    {/* Правая карточка */}
                     {perfumeRight && (
                         <div className="compare-card compare-card-right">
                             <img
@@ -42,7 +50,9 @@ function CompareFragrances({ perfumeLeft, perfumeRight }) {
                     )}
                 </div>
 
-                <button className="compare-button">Compare</button>
+                <button className="compare-button" onClick={handleCompare}>
+                    Compare
+                </button>
             </div>
         </div>
     );

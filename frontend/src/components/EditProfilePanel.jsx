@@ -6,7 +6,7 @@ import "./EditProfilePanel.css";
 const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem("refreshToken");
 
-    const response = await fetch("https://marketplaceapi20250628113538.azurewebsites.net/api/auth/refresh", {
+    const response = await fetch("https://localhost:7225/api/auth/refresh", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const refreshAccessToken = async () => {
     return data.accessToken;
 };
 
-//  Обёртка для защищённых запросов
+// Обёртка для защищённых запросов
 const fetchWithAuth = async (url, options = {}) => {
     let accessToken = localStorage.getItem("accessToken");
 
@@ -50,7 +50,6 @@ const fetchWithAuth = async (url, options = {}) => {
 
     return response;
 };
-
 
 const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
     const [firstName, setFirstName] = useState(user?.firstName || "");
@@ -81,7 +80,7 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
 
         const token = localStorage.getItem("accessToken");
 
-        const response = await fetch("https://marketplaceapi20250628113538.azurewebsites.net/api/images/AddImage", {
+        const response = await fetch("https://localhost:7225/api/images/AddImage", {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -96,40 +95,57 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
         return null;
     };
 
-
     const handleSave = async () => {
-        let updatedAvatar = {};
+        try {
+            let updatedAvatar = {};
 
-        if (avatarFile) {
-            // Удалить старую аватарку
-            if (user?.avatarId) {
-                await fetch(`https://marketplaceapi20250628113538.azurewebsites.net/api/images/DeleteImage/${user.avatarId}`, {
-                    method: "DELETE",
-                });
+            if (avatarFile) {
+                // Удалить старую аватарку
+                if (user?.avatarId) {
+                    await fetchWithAuth(`https://localhost:7225/api/images/DeleteImage/${user.avatarId}`, {
+                        method: "DELETE",
+                    });
+                }
+
+                // Загрузить новую
+                const uploaded = await uploadAvatar();
+                if (uploaded) {
+                    updatedAvatar.avatarId = uploaded.id;
+                    updatedAvatar.avatarUrl = uploaded.url;
+                }
             }
 
-            // Загрузить новую
-            const uploaded = await uploadAvatar();
-            if (uploaded) {
-                updatedAvatar.avatarId = uploaded.id;
-                updatedAvatar.avatarUrl = uploaded.url;
+            const updatedUser = {
+                ...user,
+                firstName,
+                lastName,
+                address1,
+                address2,
+                country,
+                state,
+                city,
+                zip,
+                ...updatedAvatar,
+            };
+
+            // Отправляем обновленные данные профиля на сервер
+            const response = await fetchWithAuth(`https://localhost:7225/api/users/${user.id}`, {
+                method: "PUT",
+                body: JSON.stringify(updatedUser),
+            });
+
+            if (!response.ok) {
+                throw new Error("Failed to update profile");
             }
+
+            const updatedUserFromServer = await response.json();
+
+            // Вызываем callback для обновления данных в родителе
+            onUpdateProfile(updatedUserFromServer);
+        } catch (error) {
+            console.error("Error updating profile:", error);
+            alert("Failed to update profile. Please try again.");
         }
-
-        const updatedUser = {
-            ...user,
-            firstName,
-            lastName,
-            address1,
-            address2,
-            country,
-            state,
-            city,
-            zip,
-            ...updatedAvatar,
-        };
-
-        onUpdateProfile(updatedUser); // Отправить наверх в родителя
     };
 
     const PencilIcon = () => (
@@ -209,113 +225,82 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
 
                         <div className="form-group static-group">
                             <span className="label-inline">Phone Number:</span>
-                            <span className="static-inline">{user?.phone || "+1 (000)-000-00"}</span>
-                            <div className="static-hint">Phone number used for login can’t be changed</div>
+                            <span className="static-inline">{user?.phone || "+1 (000)-000-0000"}</span>
+                            <div className="static-hint">Phone number is readonly for now</div>
                         </div>
-
-                        <button className="save-button" onClick={handleSave}>
-                            Save Changes
-                        </button>
                     </div>
 
                     {/* Правая колонка */}
                     <div className="right-column">
-                        <div className="address-header">
-                            <p>Addresses (1)</p>
-                            <span className="add-address">+ Add</span>
-                        </div>
-
-                        <p>Default Address</p>
-
                         <div className="form-group">
-                            <label className="label">Address Line 1:</label>
-                            <div className="input-container">
-                                <input
-                                    type="text"
-                                    placeholder="123 Madison Avenue"
-                                    className="input long-field"
-                                    value={address1}
-                                    onChange={(e) => setAddress1(e.target.value)}
-                                />
-                                <PencilIcon />
-                            </div>
+                            <label className="label">Address 1:</label>
+                            <input
+                                type="text"
+                                placeholder="1234 Main St"
+                                className="input"
+                                value={address1}
+                                onChange={(e) => setAddress1(e.target.value)}
+                            />
                         </div>
 
                         <div className="form-group">
-                            <label className="label">Address Line 2:</label>
-                            <div className="input-container">
-                                <input
-                                    type="text"
-                                    placeholder="Apt E5"
-                                    className="input long-field"
-                                    value={address2}
-                                    onChange={(e) => setAddress2(e.target.value)}
-                                />
-                                <PencilIcon />
-                            </div>
+                            <label className="label">Address 2:</label>
+                            <input
+                                type="text"
+                                placeholder="Apartment, studio, or floor"
+                                className="input"
+                                value={address2}
+                                onChange={(e) => setAddress2(e.target.value)}
+                            />
                         </div>
 
-                        <div className="flex-row">
-                            <div className="form-group short-field country-field">
-                                <label className="label">Country:</label>
-                                <div className="input-container">
-                                    <select
-                                        className="select"
-                                        value={country}
-                                        onChange={(e) => setCountry(e.target.value)}
-                                    >
-                                        <option>USA</option>
-                                        <option>Canada</option>
-                                        <option>Germany</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="form-group short-field state-field">
-                                <label className="label">State:</label>
-                                <div className="input-container">
-                                    <input
-                                        type="text"
-                                        placeholder="NY"
-                                        className="input"
-                                        value={state}
-                                        onChange={(e) => setState(e.target.value)}
-                                    />
-                                </div>
-                            </div>
+                        <div className="form-group short-field">
+                            <label className="label">Country:</label>
+                            <select className="input" value={country} onChange={(e) => setCountry(e.target.value)}>
+                                <option value="USA">USA</option>
+                                <option value="Canada">Canada</option>
+                                <option value="UK">UK</option>
+                            </select>
                         </div>
 
-                        <div className="flex-row">
-                            <div className="form-group short-field city-field">
-                                <label className="label">City:</label>
-                                <div className="input-container">
-                                    <input
-                                        type="text"
-                                        placeholder="New York"
-                                        className="input"
-                                        value={city}
-                                        onChange={(e) => setCity(e.target.value)}
-                                    />
-                                    <PencilIcon />
-                                </div>
-                            </div>
+                        <div className="form-group short-field">
+                            <label className="label">State/Province:</label>
+                            <input
+                                type="text"
+                                placeholder="State"
+                                className="input"
+                                value={state}
+                                onChange={(e) => setState(e.target.value)}
+                            />
+                        </div>
 
-                            <div className="form-group short-field zip-field">
-                                <label className="label">ZIP / Postal Code:</label>
-                                <div className="input-container">
-                                    <input
-                                        type="text"
-                                        placeholder="12345"
-                                        className="input"
-                                        value={zip}
-                                        onChange={(e) => setZip(e.target.value)}
-                                    />
-                                    <PencilIcon />
-                                </div>
-                            </div>
+                        <div className="form-group short-field">
+                            <label className="label">City:</label>
+                            <input
+                                type="text"
+                                placeholder="City"
+                                className="input"
+                                value={city}
+                                onChange={(e) => setCity(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="form-group short-field">
+                            <label className="label">Zip:</label>
+                            <input
+                                type="text"
+                                placeholder="Zip code"
+                                className="input"
+                                value={zip}
+                                onChange={(e) => setZip(e.target.value)}
+                            />
                         </div>
                     </div>
                 </div>
+
+                <button onClick={handleSave} className="save-button">
+                    Save Changes
+                </button>
             </div>
         </div>
     );

@@ -1,5 +1,5 @@
 ﻿//глав. страницы + каталога для женщин | мужчин + вход в акк + профиль пользователя + офорление заказа
-import React, { useContext } from "react";
+import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -29,13 +29,17 @@ import ShoppingCart from "./components/ShoppingCart";
 import CheckoutPage from "./components/CheckoutPage";
 import CompanyProfile from "./components/CompanyProfile";
 
-import "./styles/main.css";
+import AdminPanel from "./components/AdminPanel";
+import CompareFragrances from "./components/CompareFragrances"; 
+import FragranceDetailsPanel from "./components/FragranceDetailsPanel";
 
-import { AuthProvider, AuthContext, useAuth } from "./context/AuthContext";
+import { AuthProvider, useAuth } from "./context/AuthContext";
 import { CompanyAuthProvider } from "./context/CompanyAuthContext";
 
+import "./styles/main.css";
+
 function AppRoutes() {
-    const { user } = useAuth(); // если нужен user из контекста AuthContext
+    const { user } = useAuth();
 
     return (
         <Routes>
@@ -63,14 +67,18 @@ function AppRoutes() {
             <Route path="/signin" element={<SignInForm />} />
             <Route path="/register" element={<RegisterForm />} />
 
-            {/* Профили */}
             <Route path="/user-profile" element={<UserProfile />} />
             <Route path="/company-profile" element={<CompanyProfile />} />
 
             <Route path="/favorites" element={<FavoriteFragrances />} />
 
+            <Route path="/compare" element={<CompareFragrances />} /> 
+            <Route path="/fragrance-details" element={<FragranceDetailsPanel />} />
+
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="/checkout" element={<CheckoutPage />} />
+
+            <Route path="/settings" element={<AdminPanel />} />
         </Routes>
     );
 }

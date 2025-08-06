@@ -3,8 +3,23 @@
 const CompanyAuthContext = createContext();
 
 export const CompanyAuthProvider = ({ children }) => {
-    const [companyToken, setCompanyToken] = useState(localStorage.getItem("companyToken") || null);
-    const [companyId, setCompanyId] = useState(localStorage.getItem("companyId") || null);
+    const [companyToken, setCompanyToken] = useState(() => {
+        const token = localStorage.getItem("companyToken");
+        return token && token !== "null" && token !== "undefined" ? token : null;
+    });
+
+
+    const [company, setCompany] = useState(() => {
+        const storedCompany = localStorage.getItem("company");
+        return storedCompany ? JSON.parse(storedCompany) : null;
+    });
+
+    const [role, setRole] = useState(() => {
+        const savedRole = localStorage.getItem("role");
+        return savedRole && savedRole !== "null" && savedRole !== "undefined"
+            ? savedRole
+            : "COMPANY";
+    });
 
     useEffect(() => {
         if (companyToken) {
@@ -15,27 +30,43 @@ export const CompanyAuthProvider = ({ children }) => {
     }, [companyToken]);
 
     useEffect(() => {
-        if (companyId) {
-            localStorage.setItem("companyId", companyId);
+        if (company) {
+            localStorage.setItem("company", JSON.stringify(company));
         } else {
-            localStorage.removeItem("companyId");
+            localStorage.removeItem("company");
         }
-    }, [companyId]);
+    }, [company]);
 
-    const login = (token, id) => {
+    useEffect(() => {
+        if (role) {
+            localStorage.setItem("role", role);
+        } else {
+            localStorage.removeItem("role");
+        }
+    }, [role]);
+
+    // Изменяем login — теперь принимаем token и объект компании
+    const login = (token, companyData, userRole = "COMPANY") => {
         setCompanyToken(token);
-        setCompanyId(id);
+        setCompany(companyData);
+        setRole(userRole);
     };
 
     const logout = () => {
         setCompanyToken(null);
-        setCompanyId(null);
+        setCompany(null);
+        setRole(null);
+        localStorage.removeItem("companyToken");
+        localStorage.removeItem("company");
+        localStorage.removeItem("role");
     };
 
-    const isAuthenticated = !!companyToken;
+    const isAuthenticated = Boolean(companyToken);
 
     return (
-        <CompanyAuthContext.Provider value={{ companyToken, companyId, login, logout, isAuthenticated }}>
+        <CompanyAuthContext.Provider
+            value={{ companyToken, company, role, login, logout, isAuthenticated }}
+        >
             {children}
         </CompanyAuthContext.Provider>
     );

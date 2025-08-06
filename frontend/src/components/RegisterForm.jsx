@@ -9,8 +9,7 @@ function RegisterForm() {
     const [isCompany, setIsCompany] = useState(false);
 
     // User fields
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -23,54 +22,76 @@ function RegisterForm() {
 
     const navigate = useNavigate();
 
-    const handleUserSubmit = async (e) => {
-        e.preventDefault();
+    const handleUserSubmit = async () => {
         if (password !== confirmPassword) {
             toast.error("Passwords do not match");
             return;
         }
 
+        const requestBody = {
+            email,
+            nickname,
+            password,
+            role: "CLIENT",  // <-- добавлено поле role ???
+        };
+        console.log("User request body:", requestBody);
+
         try {
-            await axios.post(
+            const response = await axios.post(
                 "https://localhost:7225/api/auth/register",
-                { nickname: `${firstName} ${lastName}`, email, password },
+                requestBody,
                 { headers: { "Content-Type": "application/json" } }
             );
+            console.log("User response:", response.data);
 
             toast.success("User registered successfully!");
-            navigate("/user-profile"); // ✅ переход на профиль
+            navigate("/user-profile");
         } catch (error) {
+            console.error("User registration error:", error.response?.data || error.message);
             toast.error(error.response?.data?.message || "User registration failed");
         }
     };
 
-    const handleCompanySubmit = async (e) => {
-        e.preventDefault();
+    const handleCompanySubmit = async () => {
+        const requestBody = {
+            name: companyName,
+            description,
+            taxNumber,
+            regNumber,
+            email,
+            password
+        };
+        console.log("Company request body:", requestBody);
+
         try {
-            await axios.post(
+            const response = await axios.post(
                 "https://localhost:7225/api/companies/create-company",
-                {
-                    name: companyName,
-                    description,
-                    taxNumber,
-                    regNumber,
-                    email,
-                    password
-                },
+                requestBody,
                 { headers: { "Content-Type": "application/json" } }
             );
+            console.log("Company response:", response.data);
 
             toast.success("Company registered successfully!");
-            navigate("/company-profile"); 
+            navigate("/company-profile");
         } catch (error) {
-            console.log(error.response?.data);
+            console.error("Company registration error:", error.response?.data || error.message);
             toast.error(error.response?.data?.message || "Company registration failed");
+        }
+    };
+
+    // Универсальный обработчик формы
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (isCompany) {
+            await handleCompanySubmit();
+        } else {
+            await handleUserSubmit();
         }
     };
 
     return (
         <div className="register-container">
-            <form onSubmit={isCompany ? handleCompanySubmit : handleUserSubmit} className="register-form">
+            <form onSubmit={handleSubmit} className="register-form">
                 <h2 className="register-title">
                     {isCompany ? "NEW COMPANY REGISTRATION" : "NEW USER REGISTRATION"}
                 </h2>
@@ -101,16 +122,9 @@ function RegisterForm() {
                     <>
                         <div className="field-group">
                             <label className="field-label-container">
-                                <span className="field-label">First Name</span><span className="required">*</span>
+                                <span className="field-label">Nickname</span><span className="required">*</span>
                             </label>
-                            <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
-                        </div>
-
-                        <div className="field-group">
-                            <label className="field-label-container">
-                                <span className="field-label">Last Name</span><span className="required">*</span>
-                            </label>
-                            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
+                            <input type="text" value={nickname} onChange={(e) => setNickname(e.target.value)} required />
                         </div>
 
                         <div className="field-group">
@@ -133,8 +147,6 @@ function RegisterForm() {
                             </label>
                             <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
                         </div>
-
-                        <button type="submit" className="submit-button">Continue</button>
                     </>
                 ) : (
                     <>
@@ -179,10 +191,9 @@ function RegisterForm() {
                             </label>
                             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
-
-                        <button type="submit" className="submit-button">Continue</button>
                     </>
                 )}
+                <button type="submit" className="submit-button">Continue</button>
             </form>
             <ToastContainer />
         </div>

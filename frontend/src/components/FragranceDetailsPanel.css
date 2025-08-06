@@ -1,0 +1,178 @@
+﻿.details-wrapper {
+    padding: 40px 20px;
+    background-color: #fdfaf7;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.details-title {
+    font-size: 28px;
+    color: #5b3b2b;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+.details-content {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.fragrance-box {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tab-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+    .tab-header button {
+        background: none;
+        border: none;
+        font-weight: bold;
+        margin: 0 10px;
+        padding-bottom: 4px;
+        color: #8b4d39;
+        cursor: pointer;
+    }
+
+    .tab-header .active {
+        border-bottom: 2px solid #8b4d39;
+    }
+
+.perfume-image {
+    width: 120px;
+    height: auto;
+    margin: 16px 0;
+}
+
+.perfume-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: #5b3b2b;
+}
+
+.scent-chart {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.composition-text {
+    font-size: 14px;
+    color: #444;
+    margin-top: 10px;
+}
+
+.details-button {
+    margin-top: 16px;
+    background-color: #d4bfa2;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+}
+
+.scent-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    font-size: 14px;
+    text-align: left;
+}
+
+    .scent-list li {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 6px;
+        color: #5b3b2b;
+    }
+
+.note-name {
+    text-transform: capitalize;
+}
+
+.note-value {
+    color: gold;
+    font-size: 16px;
+}
+
+.composition-image {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.fragrance-details-wrapper {
+    padding: 2rem;
+    background-color: #fffdfc;
+}
+
+.fragrance-details-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.fragrance-details-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.fragrance-panel {
+    flex: 1 1 300px;
+    background-color: #f8f1ee;
+    padding: 1.5rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.fragrance-image {
+    width: 120px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.fragrance-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #8b2e2e;
+}
+
+.fragrance-brand {
+    font-size: 1rem;
+    color: #5b5555;
+    margin-bottom: 1rem;
+}
+
+.composition-image {
+    width: 100%;
+    max-width: 250px;
+    margin: 1rem auto;
+    display: block;
+    border-radius: 12px;
+}
+
+.scent-chart-container {
+    margin-top: 1rem;
+}
+
+.error-message {
+    text-align: center;
+    color: red;
+    font-size: 1.2rem;
+}

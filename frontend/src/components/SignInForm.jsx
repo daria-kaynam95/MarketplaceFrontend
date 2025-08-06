@@ -4,78 +4,56 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { FaGoogle, FaFacebookF } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";             // кастомный хук из AuthContext
-import { useCompanyAuth } from "../context/CompanyAuthContext"; // кастомный хук из CompanyAuthContext
+import { useAuth } from "../context/AuthContext";
+import { useCompanyAuth } from "../context/CompanyAuthContext";
 import "./SignInForm.css";
 
 function SignInForm() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [role, setRole] = useState("USER");
     const navigate = useNavigate();
 
     const { login: userLogin } = useAuth();
     const { login: companyLogin } = useCompanyAuth();
 
+    const loginUser = async () => {
+        const response = await axios.post("https://localhost:7225/api/auth/login", { email, password });
+        const token = response.data?.token ?? response.data?.jwtToken;
+        const id = response.data?.id ?? response.data?.userId;
+
+        if (!token || !id) throw new Error("User token or ID missing");
+
+        userLogin(token, id);
+        toast.success("User login successful!");
+        navigate("/user-profile");
+    };
+
+    const loginCompany = async () => {
+        try {
+            const response = await axios.post("https://localhost:7225/api/companies/login", { email, password });
+
+            // Просто вызываем login без токена и id
+            companyLogin(null, null, "COMPANY");
+
+            toast.success("Company login successful!");
+            navigate("/company-profile");
+        } catch (error) {
+            throw new Error(error.response?.data?.message || "Company login failed");
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         try {
-            // Попытка логина пользователя
-            const userResponse = await axios.post(
-                "https://localhost:7225/api/auth/login",
-                { email, password }
-            );
-
-            console.log("User login response:", userResponse.data);
-
-            const token = userResponse.data?.token ?? userResponse.data?.jwtToken;
-            const id = userResponse.data?.id ?? userResponse.data?.userId;
-
-            if (token && id) {
-                userLogin(token, id);
-                toast.success("User login successful!");
-                navigate("/user-profile");
-                return;
-            }
-
-            toast.error("Login failed: token or user ID missing.");
-        } catch (userError) {
-            console.log("User login error:", userError.response?.data || userError.message);
-
-            if (userError.response?.status === 400 || userError.response?.status === 401) {
-                try {
-                    // Попытка логина компании
-                    const companyResponse = await axios.post(
-                        "https://localhost:7225/api/companies/login",
-                        { email, password }
-                    );
-
-                    console.log("Company login response:", companyResponse.data);
-
-                    const token = companyResponse.data?.token
-                        ?? companyResponse.data?.jwtToken
-                        ?? companyResponse.data?.accessToken
-                        ?? companyResponse.data?.access_token;
-
-                    const id = companyResponse.data?.id
-                        ?? companyResponse.data?.companyId
-                        ?? companyResponse.data?.idCompany;
-
-                    if (token && id) {
-                        companyLogin(token, id, "COMPANY");
-                        toast.success("Company login successful!");
-                        navigate("/company-profile");
-                        return;
-                    }
-
-                    toast.error("Company login failed: token or company ID missing.");
-                } catch (companyError) {
-                    console.log("Company login error:", companyError.response?.data || companyError.message);
-                    toast.error(companyError.response?.data?.message || "Company login failed.");
-                }
+            if (role === "USER") {
+                await loginUser();
             } else {
-                toast.error(userError.response?.data?.message || "Login failed. Please try again.");
+                await loginCompany();
             }
+        } catch (error) {
+            console.error(`${role} login error:`, error.response?.data || error.message);
+            toast.error(error.response?.data?.message || "Login failed. Please try again.");
         }
     };
 
@@ -83,6 +61,29 @@ function SignInForm() {
         <div className="sign-in-container">
             <form onSubmit={handleSubmit} className="sign-in-form">
                 <h2 className="sign-in-title">SIGN IN / REGISTER</h2>
+
+                <div className="role-select">
+                    <label>
+                        <input
+                            type="radio"
+                            name="role"
+                            value="USER"
+                            checked={role === "USER"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        User
+                    </label>
+                    <label>
+                        <input
+                            type="radio"
+                            name="role"
+                            value="COMPANY"
+                            checked={role === "COMPANY"}
+                            onChange={(e) => setRole(e.target.value)}
+                        />
+                        Company
+                    </label>
+                </div>
 
                 <p className="sign-in-subtitle">
                     <span>Multi-brand Comparison Tool</span>
@@ -136,3 +137,4 @@ function SignInForm() {
 }
 
 export default SignInForm;
+
