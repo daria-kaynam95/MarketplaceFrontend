@@ -20,7 +20,7 @@
     gap: 30px;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 40px; /* отступ от текста и кнопки */
+    margin-bottom: 40px; 
 }
 
 .favorite-card {
@@ -42,7 +42,6 @@
         box-shadow: 0 10px 35px rgba(0,0,0,0.15);
     }
 
-/* Кружок для выбора */
 .checkbox-icon {
     width: 20px;
     height: 20px;
@@ -62,7 +61,6 @@
 }
 
 
-/* Картинка */
 .favorite-image {
     width: 200px;
     height: 200px;
@@ -71,7 +69,6 @@
     left: 5px; 
 }
 
-/* Бренд и объем */
 .brand-volume {
     font-family: 'Poppins', sans-serif;
     display: flex;
@@ -83,7 +80,6 @@
     margin-bottom: -19px;
 }
 
-/* Название */
 .favorite-name {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -92,7 +88,6 @@
     margin-bottom: -29px;
 }
 
-/* Цена */
 .favorite-price {
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
@@ -102,7 +97,6 @@
     margin-bottom: 1px;
 }
 
-/* Кнопка удаления */
 .remove-btn {
     background: #FFFAF8;
     color: #731718;

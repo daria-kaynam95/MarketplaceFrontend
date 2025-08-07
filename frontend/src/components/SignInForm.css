@@ -184,3 +184,38 @@ html, body {
         .policy-text a:hover {
             color: #8e2d2d;
         }
+
+.role-options {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.role-option {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid #6b3d3d;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #6b3d3d;
+    background-color: white;
+}
+
+    .role-option input {
+        margin-right: 0.5rem;
+        accent-color: #6b3d3d; 
+    }
+
+    .role-option.selected {
+        background-color: #fdf5f5;
+        box-shadow: 0 0 0 2px #6b3d3d inset;
+    }
+
+    .role-option:hover {
+        background-color: #f9eded;
+    }

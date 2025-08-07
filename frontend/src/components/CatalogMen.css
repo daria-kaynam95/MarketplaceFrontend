@@ -1,5 +1,4 @@
-﻿/* Заголовок с фоновым изображением и полупрозрачным наложением */
-.catalog-header {
+﻿.catalog-header {
     position: relative;
     background-image: url('../assets/headermen.png');
     background-size: cover;
@@ -12,7 +11,6 @@
     border-radius: 0;
 }
 
-    /* Полупрозрачный фон-оверлей только на этом блоке */
     .catalog-header::before {
         content: '';
         position: absolute;
@@ -136,7 +134,6 @@
         color: #B65C5C;
     }
 
-/* Кнопки пагинации */
 .pagination {
     display: flex;
     justify-content: center;

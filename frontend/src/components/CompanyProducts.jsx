@@ -2,22 +2,20 @@
 import axios from "axios";
 import "./CompanyProducts.css";
 
-function CompanyProducts({ token }) {
+function CompanyProducts() {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [newProduct, setNewProduct] = useState({
         name: "",
-        descriprtion: "",
+        description: "",
         amount: 0,
         price: 0
     });
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get("https://localhost:7225/api/products/GetProducts", {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            const res = await axios.get("https://localhost:7225/api/products/GetProducts");
             setProducts(res.data);
         } catch (error) {
             console.error("Ошибка при получении продуктов:", error);
@@ -30,7 +28,9 @@ function CompanyProducts({ token }) {
         e.preventDefault();
         try {
             await axios.post("https://localhost:7225/api/products/CreateProduct", newProduct, {
-                headers: { Authorization: `Bearer ${token}` }
+                headers: {
+                    "Content-Type": "application/json"
+                }
             });
             setShowModal(false);
             fetchProducts();
@@ -42,9 +42,7 @@ function CompanyProducts({ token }) {
     const handleDeleteProduct = async (id) => {
         if (!window.confirm("Удалить продукт?")) return;
         try {
-            await axios.delete(`https://localhost:7225/api/products/DeleteProduct${id}`, {
-                headers: { Authorization: `Bearer ${token}` }
-            });
+            await axios.delete(`https://localhost:7225/api/products/DeleteProduct/${id}`);
             fetchProducts();
         } catch (error) {
             console.error("Ошибка при удалении продукта:", error);
@@ -72,7 +70,7 @@ function CompanyProducts({ token }) {
                         <li key={p.id}>
                             <div>
                                 <h3>{p.name}</h3>
-                                <p>{p.descriprtion}</p>
+                                <p>{p.description}</p>
                                 <p>Количество: {p.amount}</p>
                                 <p>Цена: ${p.price}</p>
                                 <button onClick={() => handleDeleteProduct(p.id)}>Delete</button>
@@ -96,8 +94,8 @@ function CompanyProducts({ token }) {
                             />
                             <textarea
                                 placeholder="Description"
-                                value={newProduct.descriprtion}
-                                onChange={(e) => setNewProduct({ ...newProduct, descriprtion: e.target.value })}
+                                value={newProduct.description}
+                                onChange={(e) => setNewProduct({ ...newProduct, description: e.target.value })}
                                 required
                             />
                             <input

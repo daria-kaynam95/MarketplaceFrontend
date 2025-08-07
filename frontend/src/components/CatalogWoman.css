@@ -1,5 +1,4 @@
-﻿/* Заголовок с фоновым изображением и полупрозрачным наложением */
-.catalog-header {
+﻿.catalog-header {
     position: relative;
     background-image: url('../assets/header.png');
     background-size: cover;
@@ -12,7 +11,6 @@
     border-radius: 0;
 }
 
-    /* Полупрозрачный фон-оверлей только на этом блоке */
     .catalog-header::before {
         content: '';
         position: absolute;
@@ -25,7 +23,6 @@
         border-radius: 0;
     }
 
-/* Анимация плавного появления с подъёмом */
 @keyframes fadeInUp {
     0% {
         opacity: 0;
@@ -38,7 +35,6 @@
     }
 }
 
-/* Контейнер с надписями поверх фона */
 .catalog-header-text {
     position: relative;
     z-index: 2;
@@ -49,7 +45,6 @@
     animation: fadeInUp 1s ease forwards;
 }
 
-/* Надпись CATALOG */
 .catalog-label {
     color: #ECDED6;
     font-size: 1.5rem;
@@ -59,7 +54,6 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* Главный заголовок Women Perfume */
 .catalog-header h1 {
     color: #ECDED6;
     font-size: 5rem;
@@ -68,7 +62,6 @@
     font-family: 'Libre Caslon Text', serif;
 }
 
-/* Хлебные крошки Home > Women Perfume */
 .catalog-breadcrumb {
     color: #ECDED6;
     font-size: 1.5rem;
@@ -77,14 +70,12 @@
     font-family: 'Poppins', sans-serif;
 }
 
-/* СЕКЦИЯ: зона с нужным фоном */
 .catalog-section {
     background-color: #FFFAF8;
     padding-bottom: 4rem;
     padding-top: 2rem;
 }
 
-/* Основной контейнер */
 .catalog-container {
     display: flex;
     align-items: flex-start;
@@ -94,7 +85,6 @@
     margin-top: 1rem;
 }
 
-/* Grid карточек */
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(3, 220px);
@@ -107,7 +97,6 @@
     margin-top: -1rem;
 }
 
-/* Карточки */
 .perfume-card {
     background: linear-gradient(180deg, #ECDED6 0%, #FFFAF8 45%, #FFFAF8 100%) !important;
     border-radius: 10rem;
@@ -148,7 +137,6 @@
         color: #B65C5C;
     }
 
-/* Бейдж */
 .badge {
     position: absolute;
     top: 10px;

@@ -19,8 +19,11 @@ function SignInForm() {
 
     const loginUser = async () => {
         const response = await axios.post("https://localhost:7225/api/auth/login", { email, password });
+
+        console.log("LOGIN RESPONSE:", response.data); 
+
         const token = response.data?.token ?? response.data?.jwtToken;
-        const id = response.data?.id ?? response.data?.userId;
+        const id = response.data?.id ?? response.data?.userId ?? response.data?.user?.id;
 
         if (!token || !id) throw new Error("User token or ID missing");
 
@@ -33,9 +36,7 @@ function SignInForm() {
         try {
             const response = await axios.post("https://localhost:7225/api/companies/login", { email, password });
 
-            // Просто вызываем login без токена и id
             companyLogin(null, null, "COMPANY");
-
             toast.success("Company login successful!");
             navigate("/company-profile");
         } catch (error) {
@@ -62,8 +63,8 @@ function SignInForm() {
             <form onSubmit={handleSubmit} className="sign-in-form">
                 <h2 className="sign-in-title">SIGN IN / REGISTER</h2>
 
-                <div className="role-select">
-                    <label>
+                <div className="role-options">
+                    <label className={`role-option ${role === "USER" ? "selected" : ""}`}>
                         <input
                             type="radio"
                             name="role"
@@ -71,9 +72,9 @@ function SignInForm() {
                             checked={role === "USER"}
                             onChange={(e) => setRole(e.target.value)}
                         />
-                        User
+                        <span>User</span>
                     </label>
-                    <label>
+                    <label className={`role-option ${role === "COMPANY" ? "selected" : ""}`}>
                         <input
                             type="radio"
                             name="role"
@@ -81,9 +82,10 @@ function SignInForm() {
                             checked={role === "COMPANY"}
                             onChange={(e) => setRole(e.target.value)}
                         />
-                        Company
+                        <span>Company</span>
                     </label>
                 </div>
+
 
                 <p className="sign-in-subtitle">
                     <span>Multi-brand Comparison Tool</span>
@@ -137,4 +139,3 @@ function SignInForm() {
 }
 
 export default SignInForm;
-

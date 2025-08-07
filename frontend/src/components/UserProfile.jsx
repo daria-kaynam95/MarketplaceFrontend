@@ -1,4 +1,5 @@
 ﻿import React, { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import OrderHistory from './OrderHistory';
 import EditProfilePanel from './EditProfilePanel';
@@ -8,36 +9,35 @@ import "./UserProfile.css";
 
 function UserProfile() {
     const { authToken, userId, logout } = useAuth();
+
     const [user, setUser] = useState(null);
     const [selectedTab, setSelectedTab] = useState("profile");
     const [loading, setLoading] = useState(true);
-
-    // Вот состояние для режима редактирования:
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        if (userId && authToken) {
-            fetchUserProfile(userId);
+        if (authToken && userId) {
+            fetchUserProfile(userId, authToken);
         } else {
-            console.error("User ID или токен отсутствует");
             setLoading(false);
         }
     }, [userId, authToken]);
 
-    const fetchUserProfile = async (id) => {
+    const fetchUserProfile = async (id, token) => {
+        setLoading(true);
         try {
             const response = await fetch(`https://localhost:7225/api/users/profile/id/${id}`, {
                 headers: {
-                    Authorization: `Bearer ${authToken}`,
+                    Authorization: `Bearer ${token}`,
                 },
             });
 
-            if (response.ok) {
-                const data = await response.json();
-                setUser(data);
-            } else {
-                console.error("Ошибка при получении профиля");
+            if (!response.ok) {
+                throw new Error(`Ошибка при получении профиля: ${response.status}`);
             }
+
+            const data = await response.json();
+            setUser(data);
         } catch (error) {
             console.error("Ошибка:", error);
         } finally {
@@ -46,6 +46,11 @@ function UserProfile() {
     };
 
     const handleUpdateProfile = async (updatedUser) => {
+        if (!authToken || !userId) {
+            console.error("Невозможно обновить профиль: отсутствует токен или ID пользователя");
+            return;
+        }
+
         try {
             const response = await fetch(`https://localhost:7225/api/users/profile/id/${userId}`, {
                 method: "PUT",
@@ -56,14 +61,14 @@ function UserProfile() {
                 body: JSON.stringify(updatedUser),
             });
 
-            if (response.ok) {
-                const updatedData = await response.json();
-                setUser(updatedData);
-                setIsEditing(false);      // Выключаем режим редактирования после сохранения
-                setSelectedTab("profile"); // Возвращаемся на вкладку профиля
-            } else {
-                console.error("Ошибка при обновлении профиля");
+            if (!response.ok) {
+                throw new Error(`Ошибка при обновлении профиля: ${response.status}`);
             }
+
+            const updatedData = await response.json();
+            setUser(updatedData);
+            setIsEditing(false);
+            setSelectedTab("profile");
         } catch (error) {
             console.error("Ошибка:", error);
         }
@@ -74,6 +79,11 @@ function UserProfile() {
         window.location.href = "/signin";
     };
 
+    // Если нет токена или userId — редиректим на /signin
+    if (!authToken || !userId) {
+        return <Navigate to="/signin" replace />;
+    }
+
     if (loading) {
         return <div className="profile-wrapper">Загрузка профиля...</div>;
     }
@@ -81,7 +91,6 @@ function UserProfile() {
     return (
         <div className="profile-wrapper">
             <aside className="profile-sidebar">
-                {/* Если мы в режиме редактирования, показываем кнопку назад */}
                 {isEditing && (
                     <div
                         className="back-button"
@@ -132,7 +141,6 @@ function UserProfile() {
                         COMPARE FRAGRANCES
                     </li>
 
-                    {/* Добавляем пункт LOGOUT с иконкой */}
                     <li onClick={handleLogout} style={{ cursor: 'pointer' }}>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#603A31" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" >
                             <path d="M16 17L21 12L16 7" />
@@ -163,7 +171,6 @@ function UserProfile() {
                     </div>
                 )}
 
-                {/* В режиме редактирования показываем панель редактирования */}
                 {isEditing && (
                     <EditProfilePanel user={user} onSave={handleUpdateProfile} onCancel={() => setIsEditing(false)} />
                 )}

@@ -22,7 +22,6 @@ const ShopByGender = () => {
         <section className="shop-gender">
             <h2 className="shop-title">Shop By Gender</h2>
 
-            {/* Women */}
             <div className="gender-row thumbnail-women">
                 <div className="main-image">
                     <img src={womenImg} alt="Women" />
@@ -49,7 +48,6 @@ const ShopByGender = () => {
                 </button>
             </div>
 
-            {/* Men */}
             <div className="gender-row thumbnail-men">
                 <div className="main-image">
                     <img src={menImg} alt="Men" />

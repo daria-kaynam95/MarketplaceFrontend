@@ -48,7 +48,7 @@ function FragranceDetailsPanel() {
 
                             <div className="tab-content">
                                 {activeTab === "scent" ? (
-                                    // Можно вставить график здесь позже
+
                                     <ul className="scent-list">
                                         {Object.entries(perfume.scentIntel).map(([note, value]) => (
                                             <li key={note}>

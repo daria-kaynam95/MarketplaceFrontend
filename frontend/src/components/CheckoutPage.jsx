@@ -7,7 +7,6 @@ const CheckoutPage = () => {
     const { cartItems, addToCart, removeFromCart, clearCart } = useCart();
     const navigate = useNavigate();
 
-    // Состояния
     const [discount, setDiscount] = useState(0);
     const [discountCode, setDiscountCode] = useState("");
     const [showSuccessModal, setShowSuccessModal] = useState(false);
@@ -23,7 +22,7 @@ const CheckoutPage = () => {
 
     const applyDiscount = () => {
         if (discountCode.trim().toUpperCase() === "SAVE10") {
-            setDiscount(subtotal * 0.1); // 10% скидка
+            setDiscount(subtotal * 0.1); 
         } else {
             setDiscount(0);
             alert("Invalid discount code");
@@ -36,7 +35,6 @@ const CheckoutPage = () => {
             return;
         }
 
-        // Формируем объект заказа
         const order = {
             id: Date.now(),
             items: cartItems,
@@ -48,25 +46,20 @@ const CheckoutPage = () => {
             date: new Date().toISOString(),
         };
 
-        // Получаем текущую историю заказов из localStorage
         const ordersHistory = JSON.parse(localStorage.getItem("ordersHistory") || "[]");
 
-        // Добавляем новый заказ
         ordersHistory.push(order);
 
-        // Сохраняем обратно в localStorage
         localStorage.setItem("ordersHistory", JSON.stringify(ordersHistory));
 
-        // Очищаем корзину
         clearCart();
 
-        // Показываем модальное окно успешного заказа
         setShowSuccessModal(true);
     };
 
     const closeModal = () => {
         setShowSuccessModal(false);
-        navigate("/"); // После закрытия модального окна переходим на страницу заказов
+        navigate("/"); 
     };
 
 
@@ -75,7 +68,6 @@ const CheckoutPage = () => {
             <h2 className="checkout-title">Placing An Order</h2>
 
             <div className="checkout-grid">
-                {/* LEFT: Order Summary */}
                 <div className="order-summary">
                     <button className="return-button" onClick={handleReturn}>
                         ← Return To Shopping Cart
@@ -171,7 +163,6 @@ const CheckoutPage = () => {
                     </div>
                 </div>
 
-                {/* RIGHT: Checkout Form */}
                 <div className="checkout-form">
                     <h3 className="section-title">Checkout</h3>
 
@@ -269,7 +260,6 @@ const CheckoutPage = () => {
                 </div>
             </div>
 
-            {/* Модальное окно успешного заказа */}
             {showSuccessModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">

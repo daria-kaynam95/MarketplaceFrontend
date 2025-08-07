@@ -1,5 +1,4 @@
-﻿//глав. страницы + каталога для женщин | мужчин + вход в акк + профиль пользователя + офорление заказа
-import React from "react";
+﻿import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -99,22 +98,3 @@ function App() {
 export default App;
 
 
-//=========================================================================
-
-//профиль компании | ! доделать страницу и связи с айпишкой + добавление товара от лица компании
-/*import React from "react";
-import Header from "./components/Header";
-import CompanyProfile from "./components/CompanyProfile";
-import Footer from "./components/Footer";
-
-function App() {
-    return (
-        <div className="App">
-            <Header />
-            <CompanyProfile />
-            <Footer />
-        </div>
-    );
-}
-
-export default App;*/

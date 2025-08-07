@@ -15,11 +15,9 @@ function FavoriteFragrances() {
     };
 
     const handleCompare = () => {
-        // выбираем только отмеченные товары
         const selectedProducts = favorites.filter((item) =>
             selected.includes(item.id)
         );
-        // передаём их через navigate в CompareFragrances
         navigate('/compare', { state: { products: selectedProducts } });
     };
 
@@ -27,7 +25,6 @@ function FavoriteFragrances() {
         <div className="favorite-container">
             <h2 className="favorite-title">FAVORITE FRAGRANCES</h2>
 
-            {/* Карточки наверху */}
             <div className="favorite-grid">
                 {favorites.map((perfume) => {
                     const isSelected = selected.includes(perfume.id);
@@ -36,20 +33,17 @@ function FavoriteFragrances() {
                             key={perfume.id}
                             className={`favorite-card ${isSelected ? 'selected' : ''}`}
                         >
-                            {/* Чекбокс (квадратик) */}
                             <div
                                 className={`checkbox-icon ${isSelected ? 'checked' : ''}`}
                                 onClick={() => toggleSelect(perfume.id)}
                             ></div>
 
-                            {/* Изображение */}
                             <img
                                 src={perfume.image}
                                 alt={perfume.name}
                                 className="favorite-image"
                             />
 
-                            {/* Информация */}
                             <div className="brand-volume">
                                 <span className="brand">{perfume.brand}</span>
                                 <span className="volume">{perfume.volume}</span>
@@ -57,7 +51,6 @@ function FavoriteFragrances() {
                             <p className="favorite-name">{perfume.name}</p>
                             <p className="favorite-price">${perfume.price}</p>
 
-                            {/* Кнопка удаления */}
                             <button
                                 className="remove-btn"
                                 onClick={() => removeFromFavorites(perfume.id)}
@@ -69,7 +62,6 @@ function FavoriteFragrances() {
                 })}
             </div>
 
-            {/* Текст и кнопка внизу */}
             <p className="favorite-description">
                 {selected.length}/{favorites.length} selected for comparing
             </p>

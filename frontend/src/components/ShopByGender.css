@@ -5,7 +5,7 @@
 }
 
 .shop-title {
-    font-family: 'Libre Caslon Text', serif; /* добавил шрифт */
+    font-family: 'Libre Caslon Text', serif; 
     font-size: 36px;
     color: #603A31;
     font-weight: 700;
@@ -21,7 +21,6 @@
     flex-wrap: nowrap;
 }
 
-/* WOMEN / MEN изображения */
 .main-image {
     position: relative;
     width: 180px;
@@ -49,7 +48,6 @@
     letter-spacing: 1px;
 }
 
-/* Мини-карточки */
 .mini-card {
     width: 180px;
     height: 200px;
@@ -87,7 +85,6 @@
         line-height: 1.2;
     }
 
-/* Индивидуальные размеры и отступы */
 .best-sellers img {
     max-height: 180px;
     margin-bottom: 0px;
@@ -109,7 +106,6 @@
     margin-bottom: 0px;
 }
 
-/* SHOP ALL кнопка */
 .shop-btn {
     width: 180px;
     height: 200px;

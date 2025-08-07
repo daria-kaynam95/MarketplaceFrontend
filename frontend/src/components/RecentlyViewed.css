@@ -45,7 +45,6 @@
     margin-bottom: 20px;
 }
 
-/* Индивидуальные настройки изображений */
 .img-p1 {
     width: 245px;
     height: 299px;
@@ -73,7 +72,6 @@
     letter-spacing: 0.5px;
 }
 
-/* Общие стили текста */
 .product-info {
     display: flex;
     flex-direction: column;
@@ -82,7 +80,6 @@
     line-height: 1.2;
 }
 
-/* Строка: бренд + объём */
 .brand-size-row {
     display: flex;
     justify-content: space-between;
@@ -93,7 +90,6 @@
     margin-bottom: 1px;
 }
 
-/* Название аромата */
 .product-name {
     font-size: 1.17rem;
     font-weight: normal;
@@ -101,7 +97,6 @@
     text-align: center;
 }
 
-/* Цена */
 .product-price {
     font-size: 1.6rem;
     font-weight: 500;
@@ -110,7 +105,6 @@
     margin-top: 0.2rem;
 }
 
-/* Индивидуальные настройки текста для карточки p1 */
 .p1 .brand-size-row {
     width: 85%;
     justify-content: center;

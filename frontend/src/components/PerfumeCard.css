@@ -9,9 +9,6 @@
 }
 
 .perfume-card {
-    /*text-decoration: none; 
-    color: inherit; 
-    display: inline-block;*/
     width: 290px;
     height: 390px;
     position: relative;
@@ -74,7 +71,6 @@
     display: inline-block;
 }
 
-/* Индивидуальные размеры и позиционирование картинок */
 .perfume-card:nth-child(1) .perfume-image {
     width: 299px;
     height: 383px;
@@ -162,7 +158,6 @@
     position: relative;
 }
 
-/* Текстовый блок */
 .perfume-text {
     font-family: 'Poppins', sans-serif;
     margin-top: 0.8rem;
@@ -175,7 +170,6 @@
     font-weight: normal;
 }
 
-/* Индивидуальные отступы текста */
 .perfume-card:nth-child(1) .perfume-text {
     margin-top: 120px;
 }
@@ -246,7 +240,6 @@
     margin-left: 8px;
 }
 
-/* Индивидуальные отступы для объема */
 .perfume-card:nth-child(1) .perfume-volume {
     margin-left: 44px;
 }
@@ -312,7 +305,6 @@
     margin-top: 0rem;
 }
 
-/* Бейдж */
 .perfume-badge {
     position: absolute;
     background-color: #6A0203;
@@ -332,7 +324,6 @@
     transform: none;
 }
 
-/* Индивидуальное позиционирование бейджей */
 .perfume-card:nth-child(1) .perfume-badge {
     top: -30px;
     left: 66px;

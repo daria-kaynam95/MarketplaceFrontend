@@ -1,14 +1,14 @@
 ﻿import React, { createContext, useState, useEffect, useContext } from "react";
 
-// Создаём контекст авторизации
 export const AuthContext = createContext();
 
-// Провайдер, оборачивающий приложение
 export const AuthProvider = ({ children }) => {
-    const [authToken, setAuthToken] = useState(localStorage.getItem("authToken") || null);
-    const [userId, setUserId] = useState(localStorage.getItem("userId") || null);
+    const [authToken, setAuthToken] = useState(() => localStorage.getItem("authToken") || null);
+    const [userId, setUserId] = useState(() => {
+        const savedId = localStorage.getItem("userId");
+        return savedId && savedId !== "undefined" ? savedId : null;
+    });
 
-    // Сохраняем или удаляем токен в localStorage при изменении
     useEffect(() => {
         if (authToken) {
             localStorage.setItem("authToken", authToken);
@@ -17,22 +17,23 @@ export const AuthProvider = ({ children }) => {
         }
     }, [authToken]);
 
-    // Сохраняем или удаляем userId в localStorage при изменении
     useEffect(() => {
-        if (userId) {
+        if (userId && userId !== "undefined") {
             localStorage.setItem("userId", userId);
         } else {
             localStorage.removeItem("userId");
         }
     }, [userId]);
 
-    // Функция логина: сохраняем токен и id
     const login = (token, id) => {
+        if (!id || id === "undefined") {
+            console.warn("Передан неверный userId в login:", id);
+            return;
+        }
         setAuthToken(token);
-        setUserId(id);
+        setUserId(String(id)); 
     };
 
-    // Функция выхода
     const logout = async () => {
         if (userId) {
             try {
@@ -49,10 +50,9 @@ export const AuthProvider = ({ children }) => {
 
         setAuthToken(null);
         setUserId(null);
-        window.location.href = "/"; // редирект на главную страницу
+        window.location.href = "/";
     };
 
-    // Вычисляем, авторизован ли пользователь
     const isAuthenticated = !!authToken;
 
     return (
@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
                 setUserId,
                 login,
                 logout,
-                isAuthenticated, 
+                isAuthenticated,
             }}
         >
             {children}
@@ -72,5 +72,4 @@ export const AuthProvider = ({ children }) => {
     );
 };
 
-// Экспорт хука для использования контекста
 export const useAuth = () => useContext(AuthContext);

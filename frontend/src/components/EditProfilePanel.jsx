@@ -2,7 +2,6 @@
 import { FaUser } from "react-icons/fa";
 import "./EditProfilePanel.css";
 
-// Функция для обновления accessToken
 const refreshAccessToken = async () => {
     const refreshToken = localStorage.getItem("refreshToken");
 
@@ -23,7 +22,6 @@ const refreshAccessToken = async () => {
     return data.accessToken;
 };
 
-// Обёртка для защищённых запросов
 const fetchWithAuth = async (url, options = {}) => {
     let accessToken = localStorage.getItem("accessToken");
 
@@ -89,7 +87,7 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
         });
 
         if (response.ok) {
-            return await response.json(); // { id, url }
+            return await response.json(); 
         }
 
         return null;
@@ -100,14 +98,12 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
             let updatedAvatar = {};
 
             if (avatarFile) {
-                // Удалить старую аватарку
                 if (user?.avatarId) {
                     await fetchWithAuth(`https://localhost:7225/api/images/DeleteImage/${user.avatarId}`, {
                         method: "DELETE",
                     });
                 }
 
-                // Загрузить новую
                 const uploaded = await uploadAvatar();
                 if (uploaded) {
                     updatedAvatar.avatarId = uploaded.id;
@@ -128,7 +124,6 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
                 ...updatedAvatar,
             };
 
-            // Отправляем обновленные данные профиля на сервер
             const response = await fetchWithAuth(`https://localhost:7225/api/users/${user.id}`, {
                 method: "PUT",
                 body: JSON.stringify(updatedUser),
@@ -140,7 +135,6 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
 
             const updatedUserFromServer = await response.json();
 
-            // Вызываем callback для обновления данных в родителе
             onUpdateProfile(updatedUserFromServer);
         } catch (error) {
             console.error("Error updating profile:", error);
@@ -167,7 +161,6 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
                 </p>
 
                 <div className="edit-profile-content">
-                    {/* Левая колонка */}
                     <div className="left-column">
                         <div className="profile-photo">
                             <label htmlFor="avatar-upload">
@@ -230,7 +223,6 @@ const EditProfilePanel = ({ user, onUpdateProfile, onCancel }) => {
                         </div>
                     </div>
 
-                    {/* Правая колонка */}
                     <div className="right-column">
                         <div className="form-group">
                             <label className="label">Address 1:</label>

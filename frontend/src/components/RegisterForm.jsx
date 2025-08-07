@@ -8,13 +8,11 @@ import "./RegisterForm.css";
 function RegisterForm() {
     const [isCompany, setIsCompany] = useState(false);
 
-    // User fields
     const [nickname, setNickname] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
 
-    // Company fields
     const [companyName, setCompanyName] = useState("");
     const [description, setDescription] = useState("");
     const [taxNumber, setTaxNumber] = useState("");
@@ -32,7 +30,7 @@ function RegisterForm() {
             email,
             nickname,
             password,
-            role: "CLIENT",  // <-- добавлено поле role ???
+            role: "Client"
         };
         console.log("User request body:", requestBody);
 
@@ -43,6 +41,10 @@ function RegisterForm() {
                 { headers: { "Content-Type": "application/json" } }
             );
             console.log("User response:", response.data);
+
+            const { token, userId } = response.data;
+            localStorage.setItem("authToken", token);
+            localStorage.setItem("userId", userId);
 
             toast.success("User registered successfully!");
             navigate("/user-profile");
@@ -79,7 +81,6 @@ function RegisterForm() {
         }
     };
 
-    // Универсальный обработчик формы
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (isCompany) {
@@ -201,3 +202,4 @@ function RegisterForm() {
 }
 
 export default RegisterForm;
+

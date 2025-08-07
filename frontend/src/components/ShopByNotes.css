@@ -10,7 +10,7 @@
         margin-bottom: 40px;
         font-family: 'Libre Caslon Text', serif;
         color: #603A31;
-        text-align: center; /* центрируем заголовок */
+        text-align: center; 
     }
 
 .slider-container {
@@ -75,7 +75,6 @@
     display: block;
 }
 
-/* Индивидуальные размеры */
 .note-sweet img {
     width: 343px;
     height: 336px;
@@ -147,7 +146,6 @@
         margin: 0;
     }
 
-/* Кнопки прокрутки */
 .slider-button {
     position: absolute;
     top: 50%;

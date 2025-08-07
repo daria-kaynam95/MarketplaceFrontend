@@ -17,7 +17,6 @@
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
-/* Полный overlay */
 .overlay-men {
     position: absolute;
     top: 0;
@@ -68,7 +67,6 @@
     background: transparent;
 }
 
-    /* Индивидуальные размеры картинок */
     .perfume-image-men.pmen1 {
         width: 365px;
         height: 395px;
@@ -153,7 +151,6 @@
     font-weight: normal;
 }
 
-/* variant-классы для регулировки текста */
 .perfume-card-men.variant1 .perfume-text-men {
     margin-top: 35px;
 }
@@ -284,7 +281,6 @@
     pointer-events: none;
 }
 
-/* Индивидуальные бейджи */
 .badge1 {
     top: 10px;
     left: 79px;

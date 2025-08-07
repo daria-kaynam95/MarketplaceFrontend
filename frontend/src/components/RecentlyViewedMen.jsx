@@ -23,7 +23,7 @@ const RecentlyViewedMen = () => {
             price: '$367',
             tag: 'HIT',
             alignClass: 'img-men-right',
-            tagClass: 'recently-badge2',  // <-- Добавляем отдельный класс для бейджа
+            tagClass: 'recently-badge2',  
         },
     ];
 

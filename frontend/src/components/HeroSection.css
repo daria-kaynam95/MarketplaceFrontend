@@ -45,7 +45,6 @@
         font-family: 'Cormorant Garamond', serif;
     }
 
-/* Заголовок */
 .headline {
     position: absolute;
     top: 60px;
@@ -57,7 +56,6 @@
     z-index: 1;
 }
 
-/* Подзаголовок */
 .subheadline {
     position: absolute;
     bottom: 45px;
@@ -70,12 +68,11 @@
     z-index: 1;
 }
 
-/* Круг */
 .circle-wrapper {
     position: absolute;
-    bottom: 240px; /* подняли */
-    right: 220px; /* сдвинули правее */
-    transform: translateY(-240px); /* подняли */
+    bottom: 240px; 
+    right: 220px; 
+    transform: translateY(-240px); 
     width: 230px;
     height: 230px;
     display: flex;
@@ -91,10 +88,10 @@
 }
 
     .text-circle text {
-        font-size: 14px; /* увеличили */
-        font-weight: 700; /* жирнее */
-        letter-spacing: 2.5px; /* увеличили расстояние */
-        fill: #601919; /* сделали текст темнее для видимости */
+        font-size: 14px; 
+        font-weight: 700; 
+        letter-spacing: 2.5px; 
+        fill: #601919; 
         font-family: 'Cormorant Garamond', serif;
     }
 

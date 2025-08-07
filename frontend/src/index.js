@@ -14,7 +14,7 @@ root.render(
     <React.StrictMode>
         <BrowserRouter>
             <AuthProvider>
-                <CompanyAuthProvider>   {/* Добавлен провайдер для компании */}
+                <CompanyAuthProvider>   
                     <FavoriteProvider>
                         <CartProvider>
                             <App />

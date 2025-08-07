@@ -1,231 +1,79 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text&display=swap');
-
-.company-profile-wrapper {
+﻿.company-wrapper {
     display: flex;
+    padding: 30px;
+    background-color: #fefbf8;
     min-height: 100vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #FFFAF8;
-    color: #603A31;
 }
 
-.company-profile-sidebar {
+.company-sidebar {
     width: 250px;
-    background: #FFFAF8;
-    border-right: none;
-    padding-top: 95px;
-    box-shadow: none;
-    position: sticky;
-    top: 0;
+    border-right: 1px solid #ddd;
+    padding-right: 20px;
 }
 
-.company-profile-menu {
+.company-menu {
+    font-family: 'Poppins', sans-serif;
     list-style: none;
-    margin: 0;
     padding: 0;
 }
 
-    .company-profile-menu li {
+    .company-menu li {
+        padding: 12px 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
         display: flex;
         align-items: center;
-        cursor: pointer;
-        padding: 15px 25px;
-        font-weight: 600;
-        font-size: 14px;
-        transition: text-decoration 0.2s ease;
         gap: 10px;
-        user-select: none;
-        border-left: 4px solid transparent;
-        text-underline-offset: 4px;
-        text-decoration: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        color: #603A31;
+        border-radius: 8px;
+        transition: background 0.2s ease;
     }
 
-        .company-profile-menu li svg {
-            flex-shrink: 0;
+        .company-menu li:hover,
+        .company-menu li.active {
+            background-color: #f3eae5;
         }
 
-        .company-profile-menu li:hover {
-            text-decoration: underline;
-            background-color: transparent;
-        }
-
-        .company-profile-menu li.active {
-            text-decoration: underline;
-            border-left-color: transparent;
-            font-weight: 700;
-            background-color: transparent;
-        }
-
-.company-profile-main {
+.company-main {
     flex: 1;
-    padding: 40px 50px;
-    background: #FFFAF8;
-    box-sizing: border-box;
+    padding-left: 40px;
 }
 
-.company-profile-card {
-    max-width: 600px;
-    margin: 0 auto;
-    background: #FFFAF8;
-    padding: 10px 40px 30px 40px;
-    border-radius: 0;
-    box-shadow: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.company-card {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.company-profile-title {
-    font-family: 'Libre Caslon Text', serif;
-    font-size: 28px;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    letter-spacing: 1px;
-    font-weight: 700;
-    text-transform: uppercase;
-}
-
-.company-profile-avatar {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 30px;
-}
-
-    .company-profile-avatar img {
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-        display: block;
-    }
-
-.company-profile-name {
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.company-profile-email {
-    font-size: 14px;
-    color: #8b7d76;
+.company-title {
+    font-size: 24px;
     margin-bottom: 20px;
 }
 
-.company-profile-links {
-    margin-bottom: 30px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.company-avatar {
+    width: 100px;
+    height: 100px;
+    background: #eee;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    background-size: cover;
+    background-position: center;
 }
 
-    .company-profile-links a {
-        display: inline-block;
-        margin-bottom: 8px;
-        font-size: 14px;
-        color: #603A31;
-        text-decoration: none;
-        font-weight: 500;
-    }
-
-        .company-profile-links a:hover {
-            color: #a97661;
-            text-decoration: underline;
-        }
-
-.company-profile-edit-button {
-    background-color: transparent;
-    color: #603A31;
-    border: 1px solid #603A31;
-    padding: 3px 40px;
-    border-radius: 30px;
+.company-name {
     font-size: 18px;
-    font-weight: 400;
-    cursor: pointer;
-    transition: background-color 0.25s ease;
-    font-family: 'Poppins', sans-serif;
-    margin-top: -10px;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-    .company-profile-edit-button:hover {
-        background-color: rgba(96, 58, 49, 0.05);
-    }
-
-.company-profile-form {
-    display: none;
+.company-email {
+    color: #666;
+    margin-bottom: 20px;
 }
 
-/* Responsive */
-
-@media (max-width: 768px) {
-    .company-profile-wrapper {
-        flex-direction: column;
-    }
-
-    .company-profile-sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 1px solid #e2d8d1;
-        padding: 15px 0;
-        display: flex;
-        justify-content: center;
-    }
-
-    .company-profile-menu {
-        display: flex;
-        gap: 15px;
-    }
-
-        .company-profile-menu li {
-            padding: 10px 15px;
-            border-left: none;
-            border-bottom: 3px solid transparent;
-        }
-
-            .company-profile-menu li.active {
-                border-bottom-color: transparent;
-            }
-
-    .company-profile-main {
-        padding: 20px;
-    }
-
-    .company-profile-card {
-        padding: 20px;
-    }
-
-    .company-profile-edit-button {
-        padding: 12px 25px;
-        font-size: 16px;
-    }
+.company-info p {
+    margin-bottom: 8px;
+    font-size: 15px;
+    color: #444;
 }
-
-/* Кнопка назад (если нужна) */
-.logout-button-company {
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
-    background: none;
-    border: none;
-    color: #1f1f1f;
-    font-size: 16px;
-    border-radius: 999px;
-    cursor: pointer;
-    outline: none;
-}
-
-    .logout-button-company:hover {
-        background: none;
-        color: #1f1f1f;
-    }
-
-    .logout-button-company:focus {
-        outline: none;
-    }

@@ -3,7 +3,6 @@ import "./LimitedTimeOffer.css";
 import backgroundImage from "../assets/limited-offer.jpg";
 
 const LimitedTimeOffer = () => {
-    // сохраняем дату окончания только один раз при первом рендере
     const targetDateRef = useRef(new Date().getTime() + 7 * 24 * 60 * 60 * 1000);
 
     const [timeLeft, setTimeLeft] = useState({
